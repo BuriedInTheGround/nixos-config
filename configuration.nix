@@ -14,13 +14,16 @@ let
 in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      <nixos-hardware/common/cpu/intel>
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.useOSProber = true;
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
@@ -51,13 +54,13 @@ in
     # Allow proprietary packages.
     allowUnfree = true;
 
-    # Enable Flash in browsers.
-    firefox = {
-      enableAdobeFlash = true;
-    };
-    chromium = {
-      enablePepperFlash = true;
-    };
+    # DO NOT enable Flash in browsers, it's kinda obsolete...
+    # firefox = {
+    #   enableAdobeFlash = true;
+    # };
+    # chromium = {
+    #   enablePepperFlash = true;
+    # };
 
     # Create an alias for the unstable channel.
     packageOverrides = pkgs: {
@@ -76,10 +79,18 @@ in
     zsh
 
     ##### Shell Tools #####
+    acpi
+    alsamixer.app
     binutils
+    coreutils
     curl
+    ffmpeg
+    lm_sensors
     man
+    mktemp
     nano
+    neofetch
+    parted
     posix_man_pages
     ripgrep
     wget
@@ -91,6 +102,8 @@ in
     gnome3.gnome-tweaks
     gnomeExtensions.arc-menu
     gnomeExtensions.dash-to-panel
+    gparted
+    pavucontrol
     unstable.vscode
 
     ##### Archive Tools #####
@@ -101,8 +114,9 @@ in
     unzip
     zip
 
-    ##### Misc Tools #####
-    acpi
+    ##### Helpers #####
+    fuse
+    ntfs3g
 
     ##### Browsers #####
     chromium
@@ -213,7 +227,7 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.03"; # Did you read the comment?
+  system.stateVersion = "20.09"; # Did you read the comment?
 
 }
 
