@@ -54,14 +54,6 @@ in
     # Allow proprietary packages.
     allowUnfree = true;
 
-    # DO NOT enable Flash in browsers, it's kinda obsolete...
-    # firefox = {
-    #   enableAdobeFlash = true;
-    # };
-    # chromium = {
-    #   enablePepperFlash = true;
-    # };
-
     # Create an alias for the unstable channel.
     packageOverrides = pkgs: {
       unstable = import <nixos-unstable> {
@@ -85,6 +77,7 @@ in
     coreutils
     curl
     ffmpeg
+    killall
     lm_sensors
     man
     mktemp
@@ -94,14 +87,9 @@ in
     posix_man_pages
     ripgrep
     wget
+    xorg.xinit
 
     ##### GUI Tools #####
-    gnome-menus
-    gnome3.dconf-editor
-    gnome3.gnome-shell-extensions
-    gnome3.gnome-tweaks
-    gnomeExtensions.arc-menu
-    gnomeExtensions.dash-to-panel
     gparted
     pavucontrol
     unstable.vscode
@@ -199,8 +187,8 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
+  services.xserver.layout = "it,us";
+  services.xserver.xkbOptions = "terminate:ctrl_alt_bksp,eurosign:e";
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
@@ -211,7 +199,11 @@ in
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome3.enable = true;
+  services.xserver.windowManager.bspwm = {
+    enable = true;
+    configFile = "/home/simone/.config/bspwm/bspwmrc";
+    sxhkd.configFile = "/home/simone/.config/sxhkd/sxhkdrc";
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.simone = {
