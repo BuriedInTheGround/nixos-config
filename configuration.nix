@@ -90,6 +90,7 @@ in
     xorg.xinit
 
     ##### GUI Tools #####
+    gnome3.seahorse
     gparted
     pavucontrol
     unstable.vscode
@@ -171,6 +172,10 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # Enable Gnome Keyring.
+  services.gnome3.gnome-keyring.enable = true;
+  security.pam.services.gdm.enableGnomeKeyring = true; # Automatically unlock keyring.
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 57621 ]; # Needed for Spotify.
