@@ -25,6 +25,9 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.useOSProber = true;
 
+  # Set a maximum number of latest generations.
+  boot.loader.systemd-boot.configurationLimit = 6;
+
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Enables NetworkManager.
@@ -190,10 +193,14 @@ in
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # Enable bluetooth.
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.layout = "it,us";
-  services.xserver.xkbOptions = "terminate:ctrl_alt_bksp,eurosign:e";
+  services.xserver.layout = "us,it";
+  services.xserver.xkbOptions = "terminate:ctrl_alt_bksp,eurosign:e,grp:alt_space_toggle";
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
@@ -217,6 +224,9 @@ in
     description = "Simone Ragusa";
     extraGroups = [ "wheel" "adbusers" "docker" "networkmanager" ]; # `wheel` enable ‘sudo’ for the user.
   };
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
