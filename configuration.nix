@@ -181,7 +181,14 @@ in
   security.pam.services.gdm.enableGnomeKeyring = true; # Automatically unlock keyring.
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 57621 ]; # Needed for Spotify.
+  networking.firewall.allowedTCPPorts = [
+    # For web dev purposes.
+    3000
+    5000
+    8080
+    # Needed for Spotify.
+    57621
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
