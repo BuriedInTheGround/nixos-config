@@ -75,6 +75,7 @@
     killall
     lm_sensors
     man
+    man-pages
     mktemp
     nano
     neofetch
@@ -126,11 +127,10 @@
     ohMyZsh = {
       enable = true;
       customPkgs = [
-        pkgs.spaceship-prompt
         pkgs.zsh-you-should-use
       ];
       plugins = [ "you-should-use" ];
-      theme = "spaceship";
+      theme = "robbyrussell";
     };
   };
 
