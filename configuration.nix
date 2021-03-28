@@ -86,7 +86,6 @@
     xorg.xinit
 
     ##### GUI Tools #####
-    gnome3.seahorse
     gparted
     pavucontrol
     unstable.vscode
@@ -167,7 +166,8 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Enable Gnome Keyring.
+  # Enable Seahorse and Gnome Keyring.
+  programs.seahorse.enable = true;
   services.gnome3.gnome-keyring.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true; # Automatically unlock keyring.
 
