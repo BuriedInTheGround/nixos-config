@@ -172,7 +172,7 @@
   # Enable Seahorse and Gnome Keyring.
   programs.seahorse.enable = true;
   services.gnome3.gnome-keyring.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true; # Automatically unlock keyring.
+  security.pam.services.lightdm.enableGnomeKeyring = true; # Automatically unlock keyring.
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
@@ -210,8 +210,9 @@
   # services.xserver.displayManager.sddm.enable = true;
   # services.xserver.desktopManager.plasma5.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+  # Enable the LightDM Display Manager.
+  services.xserver.displayManager.lightdm.enable = true;
+  # Enable the BSPWM Window Manager.
   services.xserver.windowManager.bspwm = {
     enable = true;
     configFile = "/home/simone/.config/bspwm/bspwmrc";
