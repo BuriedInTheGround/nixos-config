@@ -141,14 +141,17 @@
 
   # Fonts.
   fonts.fonts = with pkgs; [
-    fira-code
-    fira-code-symbols
     noto-fonts
     noto-fonts-emoji
     noto-fonts-extra
-    powerline-fonts
     (unstable.nerdfonts.override {
-      fonts = [ "Meslo" ];
+      fonts = [
+        "DejaVuSansMono"
+        "DroidSansMono"
+        "FiraCode"
+        "Meslo"
+        "SourceCodePro"
+      ];
     })
   ];
 
