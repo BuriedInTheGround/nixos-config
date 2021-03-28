@@ -4,14 +4,6 @@
 
 { config, pkgs, ... }:
 
-let
-  zshCompletionsPlugin = pkgs.zsh-completions.overrideAttrs (oldAttrs: rec {
-    fixupPhase = ''
-      mkdir -p $out/share/zsh/plugins/zsh-completions
-      cp -r ./* $out/share/zsh/plugins/zsh-completions/
-    '';
-  });
-in
 {
   imports =
     [
@@ -136,7 +128,6 @@ in
       customPkgs = [
         pkgs.spaceship-prompt
         pkgs.zsh-you-should-use
-        zshCompletionsPlugin
       ];
       plugins = [ "you-should-use" ];
       theme = "spaceship";
