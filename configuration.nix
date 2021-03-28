@@ -196,6 +196,15 @@
 
   # Enable bluetooth.
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.config = {
+    General = {
+      DiscoverableTimeout = 0;
+      FastConnectable = true;
+    };
+    Policy = {
+      AutoEnable = true;
+    };
+  };
   services.blueman.enable = true;
 
   # Enable the X11 windowing system.
