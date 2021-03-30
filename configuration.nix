@@ -18,7 +18,15 @@
   boot.loader.grub.useOSProber = true;
 
   # Set a maximum number of latest generations.
-  boot.loader.systemd-boot.configurationLimit = 6;
+  boot.loader.systemd-boot.configurationLimit = 5;
+
+  # Set nix store auto-optimization and garbage collection.
+  nix.autoOptimiseStore = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 180d";
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
