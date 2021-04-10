@@ -69,10 +69,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    ##### Terminal & Shell Customization  #####
-    oh-my-zsh
-    zsh
-
     ##### Shell Tools #####
     acpi
     alsamixer.app
@@ -96,7 +92,6 @@
     ##### GUI Tools #####
     gparted
     pavucontrol
-    unstable.vscode
 
     ##### Archive Tools #####
     bzip2
@@ -115,7 +110,6 @@
     firefoxWrapper
 
     ##### Media #####
-    lollypop
     mpv
     nomacs
 
