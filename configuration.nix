@@ -25,7 +25,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 180d";
+    options = "--delete-older-than 105d";
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -125,14 +125,6 @@
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      customPkgs = [
-        pkgs.zsh-you-should-use
-      ];
-      plugins = [ "you-should-use" ];
-      theme = "robbyrussell";
-    };
   };
 
   # Enable ADB.
