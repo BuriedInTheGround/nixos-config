@@ -163,10 +163,19 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Enable dconf.
+  programs.dconf.enable = true;
+
   # Enable Seahorse and Gnome Keyring.
   programs.seahorse.enable = true;
   services.gnome3.gnome-keyring.enable = true;
   security.pam.services.lightdm.enableGnomeKeyring = true; # Automatically unlock keyring.
+
+  # Enable PostgreSQL
+  services.postgresql = {
+    enable = true;
+    enableTCPIP = true;
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
@@ -191,6 +200,7 @@
   # Enable bluetooth.
   hardware.bluetooth.enable = true;
   hardware.bluetooth.config = {
+    Controller = {};
     General = {
       DiscoverableTimeout = 0;
       FastConnectable = true;
