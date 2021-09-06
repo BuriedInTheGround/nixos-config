@@ -1,9 +1,3 @@
 # My NixOS configuration
 
-## Installation
-
-```shell
-sudo mv /etc/nixos /etc/nixos.bak
-sudo git clone https://github.com/BuriedInTheGround/nixos-config.git /etc/nixos
-sudo cp /etc/nixos.bak/hardware-configuration.nix /etc/nixos/
-```
+This configuration is a *work in progress* as I migrate to using flakes. DO NOT rely on its stability.
