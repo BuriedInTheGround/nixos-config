@@ -45,10 +45,6 @@ XF86Calculator
 Print
         gnome-screenshot
 
-# lockscreen
-alt + shift + x
-        multilockscreen --lock dim --display 1 --span
-
 #
 # polybar hotkeys
 #
