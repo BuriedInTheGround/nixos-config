@@ -13,11 +13,14 @@ with lib.my;
     desktop = {
       bspwm.enable = true;
       apps.pavuc.enable = true;
+      apps.rofi.enable = true;
       browsers.firefox.enable = true;
+      media.mpv.enable = true;
       term.alacritty = {
         enable = true;
         isDefault = true;
       };
+      xsecurelock.enable = true;
     };
 
     develop.gcc.enable = true;
@@ -36,13 +39,31 @@ with lib.my;
 
     services.ssh.enable = true;
 
+    shell.bat.enable = true;
+    shell.cava.enable = true;
+    shell.direnv.enable = true;
+    shell.duf.enable = true;
+    shell.dust.enable = true;
+    shell.exa.enable = true;
+    shell.fd.enable = true;
+    shell.ffmpeg.enable = true;
+    shell.fzf.enable = true;
+    shell.gping.enable = true;
     shell.neofetch.enable = true;
+    shell.procs.enable = true;
     shell.rg.enable = true;
     shell.top = {
-      default = "zenith";
+      enable = true;
       enableHtop = true;
       enableZenith = true;
+      default = "zenith";
     };
+    shell.tree = {
+      enable = true;
+      useModern = true;
+    };
+    shell.ytdl.enable = true;
+    shell.zsh.enable = true;
   };
 
   # Enables NetworkManager.
@@ -57,4 +78,7 @@ with lib.my;
 
   # Enable the user to use NetworkManager.
   user.extraGroups = [ "networkmanager" ];
+
+  # Open some TCP ports for web development.
+  networking.firewall.allowedTCPPorts = [ 3000 5000 8000 ];
 }

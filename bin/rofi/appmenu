@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+myrofi -show drun \
+       -modi drun,run \
+       -show-icons

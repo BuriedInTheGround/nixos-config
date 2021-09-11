@@ -4,13 +4,13 @@ with lib;
 with lib.my;
 
 let
-  cfg = config.modules.shell.parted;
+  cfg = config.modules.desktop.office.libreoffice;
 in {
-  options.modules.shell.parted = {
+  options.modules.desktop.office.libreoffice = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.parted ];
+    user.packages = [ pkgs.libreoffice ];
   };
 }

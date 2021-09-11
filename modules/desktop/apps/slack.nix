@@ -4,13 +4,13 @@ with lib;
 with lib.my;
 
 let
-  cfg = config.modules.shell.parted;
+  cfg = config.modules.desktop.apps.slack;
 in {
-  options.modules.shell.parted = {
+  options.modules.desktop.apps.slack = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.parted ];
+    user.packages = [ pkgs.slack ];
   };
 }

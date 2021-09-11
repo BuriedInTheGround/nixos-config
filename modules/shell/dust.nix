@@ -4,13 +4,13 @@ with lib;
 with lib.my;
 
 let
-  cfg = config.modules.shell.parted;
+  cfg = config.modules.shell.dust;
 in {
-  options.modules.shell.parted = {
+  options.modules.shell.dust = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.parted ];
+    user.packages = [ pkgs.du-dust ];
   };
 }

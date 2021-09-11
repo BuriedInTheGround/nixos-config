@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+MENU="$(myrofi -no-lazy-grab -sep "|" -dmenu -i -p 'Power Menu :' -l 5 \
+-lines 5 \
+-columns 1 \
+-width 15 \
+-fixed-num-lines 5 \
+-padding 20 \
+-selected-row 2 \
+<<< "🔴  Shutdown|♻️  Reboot|🔐  Lock|😴  Suspend|🚪  Logout")"
+case "$MENU" in
+  *Shutdown) systemctl -i poweroff;;
+  *Reboot) systemctl reboot;;
+  *Lock)
+      if command -v xsecurelock > /dev/null; then
+          XSECURELOCK_SAVER=$MY_NIXOS_BIN/saver_wallpaper \
+          XSECURELOCK_DISCARD_FIRST_KEYPRESS=1 \
+          XSECURELOCK_FONT="DejaVu Sans Mono" \
+          XSECURELOCK_PASSWORD_PROMPT=time \
+          XSECURELOCK_SHOW_HOSTNAME=0 \
+          XSECURELOCK_SHOW_USERNAME=0 \
+          xsecurelock
+      else
+          loginctl lock-session ${XDG_SESSION_ID-}
+      fi
+      ;;
+  *Suspend)
+      if command -v xsecurelock > /dev/null; then
+          XSECURELOCK_SAVER=$MY_NIXOS_BIN/saver_wallpaper \
+          XSECURELOCK_DISCARD_FIRST_KEYPRESS=1 \
+          XSECURELOCK_FONT="DejaVu Sans Mono" \
+          XSECURELOCK_PASSWORD_PROMPT=time \
+          XSECURELOCK_SHOW_HOSTNAME=0 \
+          XSECURELOCK_SHOW_USERNAME=0 \
+          xsecurelock -- systemctl suspend
+      else
+          systemctl suspend
+      fi
+      ;;
+  *Logout)
+      if command -v bspc > /dev/null; then
+          bspc quit
+      else
+          loginctl terminate-session ${XDG_SESSION_ID-}
+      fi
+esac

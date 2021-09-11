@@ -11,8 +11,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [
-      unstable.signal-desktop
-    ];
+    # Must use `unstable` because after a certain amount of time Signal
+    # complains that the version is too low a stops working.
+    user.packages = [ pkgs.unstable.signal-desktop ];
   };
 }

@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+if command -v mpv > /dev/null; then
+  mpv --no-config \
+    --no-audio \
+    --no-input-terminal \
+    --no-stop-screensaver \
+    --wid="$XSCREENSAVER_WINDOW" \
+    --panscan=1.0 \
+    --image-display-duration=inf \
+    $MY_NIXOS_WALLS/ign_colorful.png
+else
+  exec sleep 86400 # Fallback to saver_blank.
+fi

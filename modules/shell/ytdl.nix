@@ -11,8 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [
-      youtube-dl
-    ];
+    user.packages = [ pkgs.youtube-dl ];
   };
 }

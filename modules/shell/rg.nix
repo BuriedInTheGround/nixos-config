@@ -11,8 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [
-      unstable.ripgrep
-    ];
+    user.packages = [ pkgs.unstable.ripgrep ];
   };
 }

@@ -11,8 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [
-      gcc
-    ];
+    user.packages = [ pkgs.gcc ];
   };
 }

@@ -4,13 +4,13 @@ with lib;
 with lib.my;
 
 let
-  cfg = config.modules.shell.parted;
+  cfg = config.modules.shell.httpie;
 in {
-  options.modules.shell.parted = {
+  options.modules.shell.httpie = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.parted ];
+    user.packages = [ pkgs.httpie ];
   };
 }

@@ -11,7 +11,7 @@ super + KP_Enter
 
 # program launcher
 super + @space
-        dmenu_run
+        $MY_NIXOS_BIN/rofi/appmenu
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -44,6 +44,10 @@ XF86Calculator
 # screenshot (full screen)
 Print
         gnome-screenshot
+
+# power menu
+super + x
+        $MY_NIXOS_BIN/rofi/powermenu
 
 #
 # polybar hotkeys

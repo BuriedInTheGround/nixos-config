@@ -23,6 +23,7 @@ in {
           DiscoverableTimeout = 0;
           FastConnectable = true;
         };
+        settings.Policy.AutoEnable = true;
       };
     }
 

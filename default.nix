@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 
 with lib;
 with lib.my;
@@ -8,6 +8,10 @@ with lib.my;
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ] ++ (mapModulesRec' import ./modules);
+
+  # Where my custom binaries and wallpapers are.
+  environment.variables.MY_NIXOS_BIN = "${config.my.dir}/bin";
+  environment.variables.MY_NIXOS_WALLS = "${config.my.dir}/wallpapers";
 
   # Allow unfree packages from nixpkgs.
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";

@@ -5,7 +5,7 @@ with lib.my;
 
 {
   config = {
-    user.packages = with pkgs; [ feh xclip ];
+    user.packages = [ pkgs.feh ];
 
     fonts = {
       # Create a directory with links to all fonts in `/run/current-system/sw/share/X11/fonts`.
@@ -16,20 +16,33 @@ with lib.my;
 
       # Add fonts.
       fonts = with pkgs; [
+        dejavu_fonts
         noto-fonts
         noto-fonts-cjk
-        # noto-fonts-emoji
-        # noto-fonts-extra
-        (unstable.nerdfonts.override {
-          fonts = [
-            "DejaVuSansMono"
-            # "DroidSansMono"
-            # "FiraCode"
-            # "Meslo"
-            "SourceCodePro"
-          ];
+        noto-fonts-emoji
+        (unstable.iosevka.override {
+          privateBuildPlan = ''
+            [buildPlans.iosevka-term]
+            family = "Iosevka Term"
+            spacing = "term"
+            serifs = "sans"
+            no-cv-ss = true
+          '';
+          set = "term";
         })
       ];
+
+      # Enable font antialiasing and set default fonts.
+      fontconfig = {
+        enable = true;
+        antialias = true;
+        defaultFonts = {
+          emoji = [ "Noto Color Emoji" ];
+          monospace = [ "Iosevka Term Extended" ];
+          sansSerif = [ "DejaVu Sans" ];
+          serif = [ "DejaVu Serif" ];
+        };
+      };
     };
 
     # Clean up $HOME.

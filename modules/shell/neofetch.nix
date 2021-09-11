@@ -11,8 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [
-      neofetch
-    ];
+    user.packages = [ pkgs.neofetch ];
   };
 }

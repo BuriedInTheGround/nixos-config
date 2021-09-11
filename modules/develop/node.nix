@@ -11,9 +11,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs; [
-      nodejs
-    ];
+    user.packages = [ pkgs.nodejs ];
 
     # Make NPM and Node.js comply with the XDG standard.
     env.NPM_CONFIG_USERCONFIG = "$XDG_CONFIG_HOME/npm/config";

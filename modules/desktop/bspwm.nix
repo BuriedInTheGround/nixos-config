@@ -44,6 +44,17 @@ in {
             user = "${config.user.name}";
             extraConfig = ''
               [greeter]
+              # Whether to show the password input's label.
+              show-password-label = true
+              # The text of the password input's label.
+              password-label-text = Password:
+              # The text shown when an invalid password is entered. May be blank.
+              invalid-password-text = Invalid Password
+              # Show a blinking cursor in the password input.
+              show-input-cursor = true
+              # The text alignment for the password input. Possible values are:
+              # "left", "center", or "right"
+              password-alignment = right
               # Show the background image on all monitors or just the primary monitor.
               show-image-on-all-monitors = true
 
@@ -57,7 +68,7 @@ in {
               # The image will be displayed centered & unscaled.
               # Note: The file should be somewhere that LightDM has permissions to read
               #       (e.g., /etc/lightdm/).
-              background-image = "/etc/nixos/wallpapers/ign_colorful.png"
+              background-image = "${config.my.dir}/wallpapers/ign_colorful.png"
 
               # The screen's background color.
               background-color = "#3B4252"

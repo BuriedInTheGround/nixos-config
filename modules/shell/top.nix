@@ -7,12 +7,13 @@ let
   cfg = config.modules.shell.top;
 in {
   options.modules.shell.top = {
-    default = mkOpt "top" types.str;
+    enable = mkBoolOpt false;
     enableHtop = mkBoolOpt false;
     enableZenith = mkBoolOpt false;
+    default = mkOpt "top" types.str;
   };
 
-  config = {
+  config = mkIf cfg.enable {
     user.packages = with pkgs; [
       (mkIf cfg.enableHtop htop)
       (mkIf cfg.enableZenith zenith)

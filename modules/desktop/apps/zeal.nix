@@ -4,13 +4,13 @@ with lib;
 with lib.my;
 
 let
-  cfg = config.modules.shell.parted;
+  cfg = config.modules.desktop.apps.zeal;
 in {
-  options.modules.shell.parted = {
+  options.modules.desktop.apps.zeal = {
     enable = mkBoolOpt false;
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.parted ];
+    user.packages = [ pkgs.zeal ];
   };
 }
