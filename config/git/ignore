@@ -1,0 +1,15 @@
+# Vim swap files and Vim-related.
+*.netrwhist
+*.swp
+*.un~
+.*.sw[a-z]
+
+# OS-generated files.
+.CFUserTextEncoding
+.DS_Store?
+.DS_Store
+.Trash
+.Xauthority
+thumbs.db
+Icon?
+Thumbs.db

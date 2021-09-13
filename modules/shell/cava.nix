@@ -5,6 +5,7 @@ with lib.my;
 
 let
   cfg = config.modules.shell.cava;
+  configDir = config.my.configDir;
 in {
   options.modules.shell.cava = {
     enable = mkBoolOpt false;
@@ -12,5 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = [ pkgs.cava ];
+
+    home.configFile."cava".source = "${configDir}/cava";
   };
 }

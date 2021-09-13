@@ -16,9 +16,10 @@ in {
 
     # Add support for more filesystems.
     environment.systemPackages = with pkgs; [
-      fuse
-      exfat
-      ntfs3g
+      exfat   # ex-FAT file system implementation.
+      fuse    # Linux FUSE (Filesystem in Userspace) interface.
+      jmtpfs  # For MTP devices like Android phones.
+      ntfs3g  # FUSE-based NTFS driver with full write support.
     ];
   };
 }

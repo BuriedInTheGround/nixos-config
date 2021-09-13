@@ -12,5 +12,8 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = [ pkgs.bat ];
+
+    # Apply `Nord` theme to Bat.
+    env.BAT_THEME = "Nord";
   };
 }

@@ -38,7 +38,7 @@ with lib.my;
         antialias = true;
         defaultFonts = {
           emoji = [ "Noto Color Emoji" ];
-          monospace = [ "Iosevka Term Extended" ];
+          monospace = [ "DejaVu Sans Mono" ];
           sansSerif = [ "DejaVu Sans" ];
           serif = [ "DejaVu Serif" ];
         };

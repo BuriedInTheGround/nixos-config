@@ -8,16 +8,16 @@ scrolling:
   history: 20000
 font:
   normal:
-    family: monospace
+    family: Iosevka Term Extended
     style: Regular
   bold:
-    family: monospace
+    family: Iosevka Term Extended
     style: Bold
   italic:
-    family: monospace
+    family: Iosevka Term Extended
     style: Italic
   bold_italic:
-    family: monospace
+    family: Iosevka Term Extended
     style: Bold Italic
 colors:
   primary:
