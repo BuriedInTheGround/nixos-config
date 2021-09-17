@@ -10,6 +10,11 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  # Fix Fn keys on my Keychron.
+  boot.extraModprobeConfig = ''
+    options hid_apple fnmode=2
+  '';
+
   boot.kernelParams = [
     # Set monitors.
     "video=DP-1:1920x1080@60"

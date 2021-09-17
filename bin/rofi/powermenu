@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
-MENU="$(myrofi -no-lazy-grab -sep "|" -dmenu -i -p 'Power Menu :' -l 5 \
+MENU="$(myrofi -no-lazy-grab -sep "|" -dmenu -i \
+-p 'Power' \
 -lines 5 \
 -columns 1 \
--width 15 \
--fixed-num-lines 5 \
--padding 20 \
+-theme-str 'window {width: 15%;}' \
 -selected-row 2 \
-<<< "🔴  Shutdown|♻️  Reboot|🔐  Lock|😴  Suspend|🚪  Logout")"
+<<< "  Shutdown|  Reboot|  Lock|  Suspend|  Logout")"
 case "$MENU" in
   *Shutdown) systemctl -i poweroff;;
   *Reboot) systemctl reboot;;

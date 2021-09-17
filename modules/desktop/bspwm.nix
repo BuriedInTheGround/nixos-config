@@ -18,6 +18,8 @@ in {
         enable = true;
         fade = true;
         fadeDelta = 3;
+        shadow = false;
+        vSync = true;
       };
 
       # Enable unclutter to hide the mouse cursor when inactive.
@@ -25,15 +27,14 @@ in {
 
       # Enable Redshift to change the screen's colour temperature depending on
       # the time of day.
-      redshift.enable = true;
+      redshift = {
+        enable = true;
+        extraOptions = [ "-v" ];
+      };
 
       xserver = {
         # Enable the X11 windowing system.
         enable = true;
-
-        # Configure keymap in X11.
-        layout = "us,it";
-        xkbOptions = "terminate:ctrl_alt_bksp,eurosign:e,grp:alt_space_toggle";
 
         # Enable BSPWM and LightDM.
         displayManager = {
@@ -89,10 +90,15 @@ in {
         };
         windowManager.bspwm = {
           enable = true;
-          configFile = "${configDir}/bspwm/bspwmrc";
-          sxhkd.configFile = "${configDir}/sxhkd/sxhkdrc";
+          configFile = "${config.user.home}/.config/bspwm/bspwmrc";
+          sxhkd.configFile = "${config.user.home}/.config/sxhkd/sxhkdrc";
         };
       };
     };
+
+    # Copy the config files for BSPWM and sxhkd to their respective directories
+    # inside $XDG_CONFIG_HOME.
+    home.configFile."bspwm".source = "${configDir}/bspwm";
+    home.configFile."sxhkd".source = "${configDir}/sxhkd";
   };
 }

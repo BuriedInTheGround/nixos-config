@@ -11,9 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # Enable udevil for easier mounting.
-    programs.udevil.enable = true;
-
     # Add support for more filesystems.
     environment.systemPackages = with pkgs; [
       exfat   # ex-FAT file system implementation.

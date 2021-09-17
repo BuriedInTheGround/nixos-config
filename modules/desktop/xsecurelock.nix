@@ -28,6 +28,11 @@ in {
 
     # Picom isn't 100% supported by XSecureLock and needs to use "glx" as
     # backend to not show the message "INCOMPATIBLE COMPOSITOR, PLEASE FIX!".
-    services.picom.backend = mkForce "glx";
+    services.picom = {
+      backend = mkForce "glx";
+      settings = {
+        glx-no-stencil = true;
+      };
+    };
   };
 }

@@ -6,7 +6,7 @@ let
 
   modules = import ./modules.nix {
     inherit lib;
-    self.attrsets = import ./attrsets.nix { inherit lib; self = {}; };
+    self.attrsets = import ./attrsets.nix { inherit lib; self = { }; };
   };
 
   mylib = makeExtensible
@@ -15,4 +15,4 @@ let
         (file: import file { inherit self lib pkgs inputs; }) ./.);
 in
 mylib.extend
-  (self: super: foldr (a: b: a // b) {} (attrValues super))
+  (self: super: foldr (a: b: a // b) { } (attrValues super))

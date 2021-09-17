@@ -16,4 +16,13 @@ with lib;
 
   # Select internationalisation properties.
   i18n.defaultLocale = mkDefault "en_US.UTF-8";
+  console.useXkbConfig = true;
+
+  # Configure keymap in X11.
+  services.xserver = {
+    layout = mkDefault "us,it";
+    xkbOptions =
+      mkDefault "terminate:ctrl_alt_bksp,eurosign:e,grp:alt_space_toggle";
+    xkbVariant = mkDefault "us";
+  };
 }

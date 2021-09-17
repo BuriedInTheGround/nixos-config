@@ -10,6 +10,7 @@ in {
     # Add core shell packages.
     user.packages = with pkgs; [
       bc
+      jq
       xclip
     ];
 

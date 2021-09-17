@@ -1,4 +1,5 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 myrofi -show drun \
        -modi drun,run \
-       -show-icons
+       -show-icons \
+       -display-drun 'Apps'

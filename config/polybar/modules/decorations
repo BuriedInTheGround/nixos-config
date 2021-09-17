@@ -1,0 +1,14 @@
+[module/decoration]
+type = custom/text
+content-foreground = ${colors.nord3}
+content-margin = 0
+
+[module/sep-r]
+inherit = module/decoration
+content = "/"
+
+[module/sep-l]
+inherit = module/decoration
+content = "\"
+
+; vim:ft=dosini

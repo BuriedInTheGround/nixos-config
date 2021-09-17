@@ -1,0 +1,15 @@
+[module/redshift]
+type = custom/script
+
+exec = ~/.config/polybar/scripts/redshift.sh
+tail = false
+interval = 1.0
+
+click-left = ~/.config/polybar/scripts/redshift.sh --toggle &
+
+format = <label>
+format-foreground = ${colors.nord13}
+
+label = %output%
+
+; vim:ft=dosini

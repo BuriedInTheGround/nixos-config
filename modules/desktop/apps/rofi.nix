@@ -17,7 +17,7 @@ in {
 
       (writeScriptBin "myrofi" ''
         #!${stdenv.shell}
-        exec ${unstable.pkgs.rofi}/bin/rofi -m -1 "$@"
+        exec ${unstable.pkgs.rofi}/bin/rofi -m -1 -no-fixed-num-lines "$@"
       '')
     ];
 

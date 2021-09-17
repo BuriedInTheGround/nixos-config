@@ -134,9 +134,13 @@ sensitivity = 200
 ; gradient_color_8 = '#cc3333'
 gradient = 1
 gradient_count = 4
-gradient_color_1 = '#81a1c1'
-gradient_color_2 = '#88c0d0'
-gradient_color_3 = '#b48ead'
+#gradient_color_1 = '#81a1c1'
+#gradient_color_2 = '#88c0d0'
+#gradient_color_3 = '#b48ead'
+#gradient_color_4 = '#bf616a'
+gradient_color_1 = '#5e81ac'
+gradient_color_2 = '#81a1c1'
+gradient_color_3 = '#d8dee9'
 gradient_color_4 = '#bf616a'
 
 

@@ -5,10 +5,17 @@ with lib.my;
 
 {
   config = {
-    user.packages = [ pkgs.feh ];
+    user.packages = with pkgs; [
+      # To control brightness (e.g. for laptops).
+      brightnessctl
+
+      # To set a wallpaper.
+      feh
+    ];
 
     fonts = {
-      # Create a directory with links to all fonts in `/run/current-system/sw/share/X11/fonts`.
+      # Create a directory with links to all fonts
+      # in `/run/current-system/sw/share/X11/fonts`.
       fontDir.enable = true;
 
       # Add fonts provided by Ghostscript and make them available to X11 apps.
@@ -17,6 +24,8 @@ with lib.my;
       # Add fonts.
       fonts = with pkgs; [
         dejavu_fonts
+        font-awesome
+        ibm-plex
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
@@ -44,6 +53,9 @@ with lib.my;
         };
       };
     };
+
+    # Enable dconf configuration system and settings management tool.
+    programs.dconf.enable = true;
 
     # Clean up $HOME.
     system.userActivationScripts.cleanUpHome = ''

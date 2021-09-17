@@ -16,6 +16,7 @@ in {
       hardware.bluetooth = {
         # Enable bluetooth.
         enable = true;
+        package = pkgs.bluezFull;
         powerOnBoot = true;
 
         # Enable faster discoverability.
@@ -25,18 +26,34 @@ in {
         };
         settings.Policy.AutoEnable = true;
       };
+
+      services.blueman.enable = true;
     }
 
     (mkIf cfg.audio.enable {
-      # Enable PulseAudio bluetooth support.
+      # Enable PulseAudio bluetooth support for AAC, APTX, APTX-HD and LDAC.
       hardware.pulseaudio = {
-        package = pkgs.pulseaudioFull;
+        package = mkForce pkgs.pulseaudioFull;
         extraModules = [ pkgs.pulseaudio-modules-bt ];
       };
 
-      # Set bluetooth to properly handle audio sources.
+      # Enable the bluetooth A2DP profile to properly handle modern headsets.
       hardware.bluetooth.settings = {
         General.Enable = "Source,Sink,Media,Socket";
+      };
+
+      # Start a MPRIS Proxy service to control the media player using the
+      # bluetooth headset buttons.
+      systemd.user.services."mpris-proxy" = {
+        enable = true;
+        after = [ "bluetooth.target" ];
+        bindsTo = [ "bluetooth.target" ];
+        description = "MPRIS Proxy";
+        serviceConfig = {
+          ExecStart = "${pkgs.bluez}/bin/mpris-proxy";
+          Type = "simple";
+        };
+        wantedBy = [ "bluetooth.target" ];
       };
     })
   ]);

@@ -51,6 +51,6 @@
       # Uncomment the following line to expose the modules of this repository.
       # nixosModules = mapModulesRec import ./modules;
 
-      nixosConfigurations = mapHosts ./hosts {};
+      nixosConfigurations = mapHosts ./hosts { };
     };
 }

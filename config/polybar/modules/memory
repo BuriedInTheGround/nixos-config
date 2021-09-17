@@ -1,0 +1,10 @@
+[module/memory]
+type = internal/memory
+
+interval = 2
+
+format = <label>
+label =  %gb_used%
+label-foreground = ${colors.nord12}
+
+; vim:ft=dosini

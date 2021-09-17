@@ -1,0 +1,20 @@
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /nix/store
+mount-1 = ${file:/tmp/last_mount.log:/run/media}
+
+interval = 45
+fixed-values = false
+spacing = 3
+
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+
+label-mounted = %{A1:polybar-msg cmd restart:} %mountpoint%: %percentage_free%% of %total%%{A}
+label-mounted-foreground = ${colors.nord14}
+
+label-unmounted = %{A1:polybar-msg cmd restart:} %mountpoint%: not mounted%{A}
+label-unmounted-foreground = ${colors.nord11}
+
+; vim:ft=dosini

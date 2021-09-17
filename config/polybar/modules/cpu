@@ -1,0 +1,10 @@
+[module/cpu]
+type = internal/cpu
+
+interval = 0.8
+
+format = <label>
+label =  %percentage%%
+label-foreground = ${colors.nord9}
+
+; vim:ft=dosini

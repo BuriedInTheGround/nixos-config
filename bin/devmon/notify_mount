@@ -1,0 +1,1 @@
+notify-send "Mounted $1" "Device <i>$1</i> has been mounted to <i>$2</i>"

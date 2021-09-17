@@ -1,19 +1,52 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
+# Make the restart nice.
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Set the wallpaper.
 feh --bg-fill $MY_NIXOS_WALLS/mountain.jpg &
 
-xrandr --output DisplayPort-0 --auto --primary --output HDMI-0 --auto --left-of DisplayPort-0
+MONITORS=( $(xrandr -q | grep ' connected' | cut -d ' ' -f 1) )
 
-bspc monitor DisplayPort-0 -d 1 2 3 4 5
-bspc monitor HDMI-0 -d 6 7 8 9 10
+if [[ ${#MONITORS[@]} -eq 2 ]]; then
+    xrandr --output DisplayPort-0 --auto --primary \
+           --output HDMI-0 --auto --left-of DisplayPort-0
+    bspc monitor DisplayPort-0 -d {1,2,3,4,5}
+    bspc monitor HDMI-0 -d {6,7,8,9,10}
+else
+    bspc monitor -d {1,2,3,4,5,6,7,8,9,10}
+fi
 
-bspc config border_width  2
-bspc config window_gap    8
-# TODO: enable after polybar is added -> bspc config top_padding  32
+# BSPWM Configuration {{{
 
-bspc config split_ratio        0.52
-bspc config borderless_monocle true
-bspc config gapless_monocle    true
+# Look.
+bspc config active_border_color    '#3b4252'
+bspc config borderless_monocle     true
+bspc config border_width           2
+bspc config focused_border_color   '#4c566a'
+bspc config gapless_monocle        true
+bspc config normal_border_color    '#2e3440'
+bspc config presel_feedback_color  '#81a1c1'
+bspc config window_gap             8
+
+# Behaviour.
+bspc config remove_disabled_monitors  true
+bspc config remove_unplugged_monitors true
+bspc config split_ratio               0.52
+
+# }}}
+
+# Make sure to focus desktop 1.
+bspc desktop --focus 1
+
+# Make sure XKB keymap is applied.
+setxkbmap
+
+# Start polybar if correctly installed.
+if command -v polybar > /dev/null; then
+    if [[ -x $XDG_CONFIG_HOME/polybar/launch.sh ]]; then
+        $XDG_CONFIG_HOME/polybar/launch.sh
+    fi
+fi
+
+# vim:foldmethod=marker:foldlevel=0

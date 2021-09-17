@@ -6,7 +6,7 @@ with lib.my;
 {
   options = {
     # User core settings and infos.
-    user = mkOpt {} types.attrs;
+    user = mkOpt { } types.attrs;
 
     # Links to directories of this repository.
     my = {
@@ -19,9 +19,9 @@ with lib.my;
 
     # Aliases to Home Manager handled user folders.
     home = {
-      file       = mkOpt' {} "Files to place directly in $HOME"   types.attrs;
-      configFile = mkOpt' {} "Files to place in $XDG_CONFIG_HOME" types.attrs;
-      dataFile   = mkOpt' {} "Files to place in $XDG_DATA_HOME"   types.attrs;
+      file       = mkOpt' { } "Files to place directly in $HOME"   types.attrs;
+      configFile = mkOpt' { } "Files to place in $XDG_CONFIG_HOME" types.attrs;
+      dataFile   = mkOpt' { } "Files to place in $XDG_DATA_HOME"   types.attrs;
     };
 
     # Environment variables accumulator.
@@ -29,7 +29,7 @@ with lib.my;
       apply = mapAttrs (n: v:
         if isList v then concatMapStringsSep ":" (x: toString x) v
         else (toString v));
-      default = {};
+      default = { };
       description = "Environment variables.";
       type = attrsOf (oneOf [ str path (listOf (either str path)) ]);
     };

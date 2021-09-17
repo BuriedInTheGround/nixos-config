@@ -1,0 +1,53 @@
+[config]
+# Set screen DPI.
+dpi = 0
+
+# Monitor for the `top-main` bar.
+top-main-monitor = ${env:MONITOR_PRIMARY:DisplayPort-0}
+
+# Monitor for the `top-secondary` bar.
+top-secondary-monitor = ${env:MONITOR_SECONDARY:HDMI-0}
+
+# Bar position (in common for all bars).
+width = 100%:-16
+height = 36
+offset-x = 8
+offset-y = 8
+radius = 0.0
+
+# Size for {over,under}line (in common for all bars).
+line-size = 2
+
+# Fix center position for the `modules-center` block.
+fixed-center = true
+
+# WM settings.
+override-redirect = false
+wm-restack = bspwm
+
+# Modules for the `top-main` bar.
+top-main-left = bspwm
+top-main-right = network sep-r redshift sep-r memory sep-r cpu sep-r pulseaudio sep-r date
+
+# Modules for the `top-secondary` bar.
+top-secondary-left = filesystem sep-l bluetooth sep-l temperature
+top-secondary-right = bspwm
+
+# Battery module options.
+# TODO: find `bat` and `adp` in launch.sh and use envvars.
+battery-full-at = 100
+battery-bat = BAT0
+battery-adp = AC
+
+# MPD module options.
+mpd-host = 127.0.0.1
+mpd-port = 6600
+
+# Network module options.
+# TODO: find the interface in launch.sh and use envvars.
+network-interface = wlp8s0
+
+# Temperature module options.
+temperature-hwmon= ${env:HWMON:}
+
+; vim:ft=dosini

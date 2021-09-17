@@ -1,0 +1,23 @@
+[module/pulseaudio]
+type = internal/pulseaudio
+
+use-ui-max = true
+interval = 5
+
+format-volume = <ramp-volume> <label-volume>
+format-muted = <label-muted>
+
+label-volume = %percentage%%
+label-volume-foreground = ${colors.nord15}
+
+label-muted =  Mute
+label-muted-foreground = ${colors.nord11}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = ${colors.nord15}
+
+click-right = pavucontrol
+
+; vim:ft=dosini

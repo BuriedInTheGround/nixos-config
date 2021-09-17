@@ -1,0 +1,31 @@
+[module/temperature]
+type = internal/temperature
+
+interval = 0.8
+
+hwmon-path = ${config.temperature-hwmon}
+
+base-temperature = 20
+warn-temperature = 70
+
+units = true
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+
+label = %temperature-c%
+
+label-warn = %temperature-c%
+label-warn-foreground = ${colors.nord11}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-0-foreground = ${colors.nord9}
+ramp-1-foreground = ${colors.nord14}
+ramp-2-foreground = ${colors.nord13}
+ramp-3-foreground = ${colors.nord12}
+ramp-4-foreground = ${colors.nord11}
+
+; vim:ft=dosini

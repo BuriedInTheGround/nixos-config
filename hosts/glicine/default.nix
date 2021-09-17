@@ -11,13 +11,14 @@ with lib.my;
 
   modules = {
     desktop = {
-      bspwm.enable = true;
       apps.flameshot.enable = true;
       apps.pavuc.enable = true;
       apps.rofi.enable = true;
       browsers.firefox.enable = true;
+      bspwm.enable = true;
       media.mpv.enable = true;
       media.ncmpcpp.enable = true;
+      polybar.enable = true;
       term.alacritty = {
         enable = true;
         isDefault = true;
@@ -45,11 +46,14 @@ with lib.my;
     hardware.filesystems.enable = true;
     hardware.sensors.enable = true;
 
+    services.devmon.enable = true;
+    services.dunst.enable = true;
     services.mpd.enable = true;
     services.ssh.enable = true;
 
     shell.bat.enable = true;
     shell.cava.enable = true;
+    shell.cmatrix.enable = true;
     shell.direnv.enable = true;
     shell.duf.enable = true;
     shell.dust.enable = true;
@@ -60,6 +64,7 @@ with lib.my;
     shell.git.enable = true;
     shell.gping.enable = true;
     shell.neofetch.enable = true;
+    shell.pastel.enable = true;
     shell.procs.enable = true;
     shell.qalc.enable = true;
     shell.rg.enable = true;

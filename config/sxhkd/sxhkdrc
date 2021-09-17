@@ -37,6 +37,9 @@ XF86AudioLowerVolume
 XF86Calculator
         alacritty -e qalc
 
+F4
+        alacritty -e qalc
+
 # brightness control
 {_,shift + ,super + }XF86MonBrightness{Down,Up}
         brightnessctl set {1-,10-,1%,+1,+10,100%}
@@ -44,6 +47,20 @@ XF86Calculator
 # screenshot
 Print
         flameshot gui
+
+# zenith system summary and processes
+F8
+        if command -v zenith > /dev/null; then \
+        alacritty -o font.offset.y=-1 font.offset.x=-1 \
+        window.padding.x=42 window.padding.y=40 \
+        -e zenith; fi
+
+# cava music visualizer
+F9
+        if command -v cava > /dev/null; then \
+        alacritty -o font.offset.y=-1 font.offset.x=-1 \
+        window.padding.x=42 window.padding.y=40 \
+        -e cava; fi
 
 # power menu
 super + x
