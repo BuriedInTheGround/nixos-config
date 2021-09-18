@@ -14,6 +14,7 @@ with lib.my;
       apps.flameshot.enable = true;
       apps.pavuc.enable = true;
       apps.rofi.enable = true;
+      apps.telegram.enable = true;
       browsers.firefox.enable = true;
       bspwm.enable = true;
       media.mpv.enable = true;

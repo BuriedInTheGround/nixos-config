@@ -31,6 +31,10 @@ if [[ $SYS_TYPE == "desktop" ]]; then
         echo "--- $(date) ---" | tee -a /tmp/polybar-top-secondary.log
         polybar top-secondary 2>&1 | tee -a /tmp/polybar-top-secondary.log & disown
     fi
+
+    # Launch `bottom-mpd` bar.
+    echo "--- $(date) ---" | tee -a /tmp/polybar-bottom-mpd.log
+    polybar bottom-mpd 2>&1 | tee -a /tmp/polybar-bottom-mpd.log & disown
 elif [[ $SYS_TYPE == "laptop" ]]; then
     echo "---" | tee -a /tmp/polybar-generic.log
     echo "Error: laptop setup not implemented." | tee -a /tmp/polybar-generic.log
@@ -38,5 +42,10 @@ else
     echo "---" | tee -a /tmp/polybar-top-main.log
     echo "Error: cannot determine system type." | tee -a /tmp/polybar-generic.log
 fi
+
+# Reset `bottom-mpd` bar visibility, then wait, then hide it.
+echo 'visible' > /tmp/bottom-mpd-status.log
+sleep 3
+polybar-msg hook mpd-ipc 1 & disown
 
 echo "Bars launched..."

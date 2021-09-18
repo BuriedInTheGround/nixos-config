@@ -3,10 +3,13 @@
 dpi = 0
 
 # Monitor for the `top-main` bar.
-top-main-monitor = ${env:MONITOR_PRIMARY:DisplayPort-0}
+top-main-monitor = ${env:MONITOR_MAIN:DisplayPort-0}
 
 # Monitor for the `top-secondary` bar.
 top-secondary-monitor = ${env:MONITOR_SECONDARY:HDMI-0}
+
+# Monitor for the `bottom-mpd` bar.
+bottom-mpd-monitor = ${env:MONITOR_MAIN:DisplayPort-0}
 
 # Bar position (in common for all bars).
 width = 100%:-16
@@ -32,6 +35,10 @@ top-main-right = network sep-r redshift sep-r memory sep-r cpu sep-r pulseaudio 
 # Modules for the `top-secondary` bar.
 top-secondary-left = filesystem sep-l bluetooth sep-l temperature
 top-secondary-right = bspwm
+
+# Modules for the `bottom-mpd` bar.
+bottom-mpd-left = mpd-ipc
+bottom-mpd-center = mpd
 
 # Battery module options.
 # TODO: find `bat` and `adp` in launch.sh and use envvars.

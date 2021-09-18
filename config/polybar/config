@@ -13,9 +13,6 @@ radius = ${config.radius}
 fixed-center = ${config.fixed-center}
 dpi = ${config.dpi}
 
-background = ${colors.nord0}
-foreground = ${colors.nord4}
-
 line-size = ${config.line-size}
 
 override-redirect = ${config.override-redirect}
@@ -28,18 +25,30 @@ font-2 = "Font Awesome 5 Free Regular:size=12;3"
 font-3 = "Font Awesome 5 Brands:size=12;3"
 font-4 = "Noto Sans CJK JP:size=12;3"
 
+# Margin between modules (used for all bars).
+module-margin = 1
+
 cursor-click = pointer
 cursor-scroll = ns-resize
 
 enable-ipc = true
 
-[bar/top-main]
+[bar/base-dark]
 inherit = bar/base
 
-monitor = ${config.top-main-monitor}
+background = ${colors.nord0}
+foreground = ${colors.nord4}
 
-# Margin between modules for this bar.
-module-margin = 1
+[bar/base-light]
+inherit = bar/base
+
+background = ${colors.nord6}
+foreground = ${colors.nord0}
+
+[bar/top-main]
+inherit = bar/base-dark
+
+monitor = ${config.top-main-monitor}
 
 # Padding of this bar.
 padding-left = 0
@@ -49,12 +58,9 @@ modules-left = ${config.top-main-left}
 modules-right = ${config.top-main-right}
 
 [bar/top-secondary]
-inherit = bar/base
+inherit = bar/base-dark
 
 monitor = ${config.top-secondary-monitor}
-
-# Margin between modules for this bar.
-module-margin = 1
 
 # Padding of this bar.
 padding-left = 3
@@ -62,5 +68,19 @@ padding-right = 0
 
 modules-left = ${config.top-secondary-left}
 modules-right = ${config.top-secondary-right}
+
+[bar/bottom-mpd]
+inherit = bar/base-light
+
+bottom = true
+
+monitor = ${config.bottom-mpd-monitor}
+
+# Padding of this bar.
+padding-left = 3
+padding-right = 3
+
+modules-left = ${config.bottom-mpd-left}
+modules-center = ${config.bottom-mpd-center}
 
 ; vim:ft=dosini

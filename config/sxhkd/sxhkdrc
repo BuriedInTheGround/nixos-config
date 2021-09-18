@@ -69,11 +69,10 @@ super + x
 #
 # polybar hotkeys
 #
-super + n
-        polybar-msg cmd show; bspc config top_padding 32
 
-super + shift + n
-        polybar-msg cmd hide; bspc config top_padding 0
+# toggle `bottom-mpd` bar
+super + n
+        polybar-msg hook mpd-ipc 1
 
 #
 # bspwm hotkeys

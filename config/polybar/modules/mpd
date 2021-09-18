@@ -1,0 +1,30 @@
+[module/mpd]
+type = internal/mpd
+
+host = ${config.mpd-host}
+port = ${config.mpd-port}
+
+format-online = <toggle> <icon-prev> <label-song> <label-time> <icon-next> | <icon-repeat> <icon-random> <icon-consume>
+format-playing = ${self.format-online}
+format-paused = ${self.format-online}
+format-stopped = <toggle> <icon-prev> %{A1:alacritty -o window.padding.x=40 window.padding.y=40 -e ncmpcpp:}Music Stopped%{A} <icon-next> | <icon-repeat> <icon-random> <icon-consume>
+format-offline = <label-offline>
+
+label-song = %{A1:alacritty -o window.padding.x=40 window.padding.y=40 -e ncmpcpp:}%artist% — %title%%{A}
+
+label-time = %{A1:alacritty -o window.padding.x=40 window.padding.y=40 -e ncmpcpp:}%elapsed% / %total%%{A}
+
+label-offline =  MPD Is Offline
+
+icon-play = 
+icon-pause = 
+icon-prev = 
+icon-next = 
+icon-random = 
+icon-repeat = 
+icon-consume = 
+toggle-on-foreground = ${colors.nord9}
+# Nord 4 dimmed by 0x14 on every RGB component.
+toggle-off-foreground = "#c4cad5"
+
+; vim:ft=dosini
