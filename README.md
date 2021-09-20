@@ -1,6 +1,6 @@
 # nixos-config
 
-[![NixOS 21.05](https://img.shields.io/badge/NixOS-21.05-blue?logo=NixOS&logoColor=white)](https://nixos.org)
+[![NixOS unstable](https://img.shields.io/badge/NixOS-unstable-blue?logo=NixOS&logoColor=white)](https://nixos.org)
 
 My [NixOS](https://nixos.org) system+user configuration.
 Powered by [Nix](https://github.com/NixOS/nix),
