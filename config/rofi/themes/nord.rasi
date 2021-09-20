@@ -25,7 +25,9 @@
     border-color: @nord3;
 }
 
-#window {
+/* ##### window ##### */
+
+window {
     border: 1px;
     font: "IBM Plex Mono SemiBold 11";
     location: center;
@@ -33,72 +35,121 @@
     width: 30%;
 }
 
-#inputbar {
+/* ===== inputbar ===== */
+
+inputbar {
     children: [ prompt, entry ];
 }
 
-#prompt {
+/* +++++ prompt +++++ */
+
+prompt {
     font: "IBM Plex Mono SemiBold 12";
     padding: 10px;
     text-color: @nord12;
 }
 
-#entry {
+/* +++++ entry +++++ */
+
+entry {
     padding: 10px;
     text-color: @nord4;
     blink: true;
 }
 
-#listview {
+/* ===== listview ===== */
+
+listview {
     dynamic: true;
     scrollbar: false;
     lines: 8;
 }
 
-#element {
+/* +++++ element +++++ */
+
+element {
     padding: 10px;
     text-color: @nord4;
 }
 
-#element-icon {
+element.selected.normal {
+    background-color: @nord2;
+}
+
+element.selected.urgent {
+    background-color: @nord2;
+}
+
+element.selected.active {
+    background-color: @nord2;
+}
+
+/* ----- element-icon ----- */
+
+element-icon {
     size: 1.65ch;
 }
 
-#element.normal.normal {
-    text-color: @nord4;
-}
-
-#element.normal.urgent {
-    text-color: @nord11;
-}
-
-#element.normal.active {
-    text-color: @nord8;
-}
-
-#element.alternate.normal {
-    text-color: @nord4;
-}
-
-#element.alternate.urgent {
-    text-color: @nord11;
-}
-
-#element.alternate.active {
-    text-color: @nord8;
-}
-
-#element.selected.normal {
+element-icon.selected.normal {
     background-color: @nord2;
     text-color: @nord4;
 }
 
-#element.selected.urgent {
+element-icon.selected.urgent {
     background-color: @nord2;
     text-color: @nord11;
 }
 
-#element.selected.active {
+element-icon.selected.active {
     background-color: @nord2;
     text-color: @nord8;
+}
+
+/* ----- element-text ----- */
+
+element-text.normal.normal {
+    text-color: @nord4;
+}
+
+element-text.normal.urgent {
+    text-color: @nord11;
+}
+
+element-text.normal.active {
+    text-color: @nord8;
+}
+
+element-text.alternate.normal {
+    text-color: @nord4;
+}
+
+element-text.alternate.urgent {
+    text-color: @nord11;
+}
+
+element-text.alternate.active {
+    text-color: @nord8;
+}
+
+element-text.selected.normal {
+    background-color: @nord2;
+    text-color: @nord4;
+}
+
+element-text.selected.urgent {
+    background-color: @nord2;
+    text-color: @nord11;
+}
+
+element-text.selected.active {
+    background-color: @nord2;
+    text-color: @nord8;
+}
+
+/* ===== message ===== */
+
+/* +++++ textbox +++++ */
+
+textbox {
+    text-color: @nord4;
 }
