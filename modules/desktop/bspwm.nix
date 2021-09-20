@@ -69,7 +69,7 @@ in {
               # The image will be displayed centered & unscaled.
               # Note: The file should be somewhere that LightDM has permissions to read
               #       (e.g., /etc/lightdm/).
-              background-image = "${config.my.dir}/wallpapers/ign_colorful.png"
+              background-image = "/etc/nixos/wallpapers/ign_colorful.png"
 
               # The screen's background color.
               background-color = "#3B4252"
