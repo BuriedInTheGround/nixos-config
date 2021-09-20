@@ -10,8 +10,11 @@ with lib.my;
 
     # Links to directories of this repository.
     my = {
-      # Where the repository is located locally: `/etc/nixos`.
-      dir        = mkOpt "/etc/nixos"               types.path;
+      # Where the repository is located locally (usually `/etc/nixos`).
+      dir = mkOpt (findFirst pathExists (toString ../.) [
+        "${config.user.home}/.config/nixos-config"
+        "/etc/nixos"
+      ]) types.path;
       # Other relative paths.
       configDir  = mkOpt "${config.my.dir}/config"  types.path;
       modulesDir = mkOpt "${config.my.dir}/modules" types.path;

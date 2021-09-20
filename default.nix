@@ -7,7 +7,7 @@ with lib.my;
   # Import Home Manager NixOS Module and all modules under `./modules`.
   imports = [
     inputs.home-manager.nixosModules.home-manager
-  ] ++ (mapModulesRec' import ./modules);
+  ] ++ (mapModulesRec' import (toString ./modules));
 
   # Where my custom binaries and wallpapers are.
   environment.variables.MY_NIXOS_BIN = "${config.my.dir}/bin";
