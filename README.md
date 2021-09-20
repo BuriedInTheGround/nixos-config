@@ -37,7 +37,8 @@ root (e.g. using `sudo`).
 ```shell
 nixos-generate-config --root /mnt
 ```
-4. (Optional) Temporarely move the files generated in `/mnt/etc/nixos` somewhere else.
+4. (Optional) Temporarely move the files generated in `/mnt/etc/nixos`
+   somewhere else.
 5. Start a nix-shell with
 ```shell
 nix-shell -p git nixFlakes
@@ -52,14 +53,14 @@ mv /etc/nixos /etc/nixos.bak
 ln -s /mnt/etc/nixos /etc/nixos
 ```
 8. (Optional) Create a sub-directory inside `hosts/` with the name you want for
-   your host
+   your host.
 9. (Optional) Put the files you moved in (4) into your host folder.
 10. (Optional) Rename `hosts/<your-hostname>/configuration.nix` to
    `hosts/<your-hostname>/default.nix`.
 11. (Optional) Customize `hosts/<your-hostname>/default.nix` my adding modules
     and NixOS settings.
 12. (Optional) Set your username by changing my default (`"simone"`) in
-   `modules/options.nix`
+   `modules/options.nix`.
 13. (Optional) Add your changes with git, e.g.
 ```shell
 git add hosts/<your-hostname>

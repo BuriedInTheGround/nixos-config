@@ -9,13 +9,13 @@ setopt AUTO_MENU        # Automatically use menu completion after the second
                         # consecutive request for completion (e.g. <TAB><TAB>).
 
 setopt AUTO_PARAM_KEYS  # The automatically added charater is deleted if, after
-			# a parameter name completion, the next character typed
-			# is one of those that have to come directly after the
-			# name.
+                        # a parameter name completion, the next character typed
+                        # is one of those that have to come directly after the
+                        # name.
 
 setopt AUTO_PARAM_SLASH # If a parameter is completed whose content is the name
-			# of a directory, then add a trailing slash instead of
-			# a space.
+                        # of a directory, then add a trailing slash instead of
+                        # a space.
 
 setopt COMPLETE_ALIASES # Complete the aliases (aliases are distinct commands
                         # from the completion point of view).
@@ -23,9 +23,9 @@ setopt COMPLETE_ALIASES # Complete the aliases (aliases are distinct commands
 setopt COMPLETE_IN_WORD # The cursor doesn't move before completion.
 
 setopt HASH_LIST_ALL    # Whenever a command completion or spelling correction
-			# is attempted, make sure the entire command path is
-			# hashed first. This makes the first completion slower
-			# but avoids false reports of spelling errors.
+                        # is attempted, make sure the entire command path is
+                        # hashed first. This makes the first completion slower
+                        # but avoids false reports of spelling errors.
 
 unsetopt MENU_COMPLETE  # Don't loop through the list of possible completions
                         # (use AUTO_MENU instead).
@@ -45,8 +45,8 @@ unsetopt CORRECT_ALL        # Do not try to correct the spelling of all
 setopt FLOW_CONTROL         # Enable flow control via start/stop characters.
 
 setopt IGNORE_EOF           # Do not exit on EOF, require the use of `exit` or
-			    # `logout`. Ten consecutive EOFs will cause to exit
-			    # anyway.
+                            # `logout`. Ten consecutive EOFs will cause to exit
+                            # anyway.
 
 setopt INTERACTIVE_COMMENTS # Allow comments even in interactive shells.
 
