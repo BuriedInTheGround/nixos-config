@@ -18,6 +18,11 @@ in {
       startWhenNeeded = true;
     };
 
+    programs.ssh.extraConfig = ''
+      Host github.com
+        AddKeysToAgent yes
+    '';
+
     # TODO(note to self): make a new key using ed25519, it's way shorter and
     # also faster (and remember to update it on GitHub, please).
     user.openssh.authorizedKeys.keys =
