@@ -51,6 +51,11 @@ in {
       follow_inside_symlinks    "yes"
     '';
 
+    systemd.tmpfiles.rules = [
+      "d '${mpdDataDir}' - ${config.user.name} ${config.user.group} - -"
+      "d '${mpdPlaylistsDir}' - ${config.user.name} ${config.user.group} - -"
+    ];
+
     systemd.user.services."mpd" = {
       enable = true;
       after = [ "network.target" "sound.target" ];
@@ -58,7 +63,6 @@ in {
       serviceConfig = {
         ExecStart = "${pkgs.mpd}/bin/mpd --no-daemon ${mpdConfigDir}/mpd.conf";
         Type = "notify";
-        ExecStartPre = ''${pkgs.bash}/bin/bash -c "${pkgs.coreutils}/bin/mkdir -p '${mpdDataDir}' '${mpdPlaylistsDir}'"'';
       };
       wantedBy = mkIf (!cfg.startWhenNeeded) [ "default.target" ];
     };
