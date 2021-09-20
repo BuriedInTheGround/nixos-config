@@ -56,9 +56,13 @@ in {
       '';
     };
 
-    # Clean up Zsh cache.
-    system.userActivationScripts.cleanUpZgen = ''
-      rm -rfv $XDG_CACHE_HOME/zsh/*
+    # Clean up Zsh cache (excluding the results of compdump).
+    system.userActivationScripts.cleanUpZshCache = ''
+      for f in $XDG_CACHE_HOME/zsh/*; do
+        [[ "$f" == "$XDG_CACHE_HOME/zsh/zcompdump" ]] && continue
+        [[ "$f" == "$XDG_CACHE_HOME/zsh/zbashcompdump" ]] && continue
+        rm -rfv "$f"
+      done
     '';
   };
 }
