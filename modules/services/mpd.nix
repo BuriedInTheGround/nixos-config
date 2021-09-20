@@ -5,7 +5,11 @@ with lib.my;
 
 let
   cfg = config.modules.services.mpd;
+
   mpdConfigDir = "${config.user.home}/.config/mpd";
+
+  # Note: the following directories MUST be created manually to ensure the
+  # right permissions.
   mpdDataDir = "${config.user.home}/.local/share/mpd";
   mpdPlaylistsDir = "${mpdDataDir}/playlists";
 in {
@@ -50,11 +54,6 @@ in {
       follow_outside_symlinks   "yes"
       follow_inside_symlinks    "yes"
     '';
-
-    systemd.tmpfiles.rules = [
-      "d '${mpdDataDir}' - ${config.user.name} ${config.user.group} - -"
-      "d '${mpdPlaylistsDir}' - ${config.user.name} ${config.user.group} - -"
-    ];
 
     systemd.user.services."mpd" = {
       enable = true;
