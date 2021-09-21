@@ -31,12 +31,12 @@ with lib.my;
     develop.gcc.enable = true;
     develop.go.enable = true;
     # develop.node.enable = true;
-    # develop.shell.enable = true;
+    develop.shell.enable = true;
 
     editors.vim = {
       enable = true;
       supportLSP = [ "go" ]; # No `nix` for now, as it's too slow.
-      supportTreesitter = [ "go" "nix" "yaml" ];
+      supportTreesitter = [ "bash" "go" "nix" "yaml" ];
     };
 
     hardware.amd.enable = true;
