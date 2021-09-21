@@ -34,7 +34,7 @@ with lib.my;
 
   # Limit the number of generations to prevent the boot partition running out
   # of space.
-  boot.loader.systemd-boot.configurationLimit = mkDefault 15;
+  boot.loader.systemd-boot.configurationLimit = mkDefault 20;
 
   # Install some basic packages in the system profile.
   environment.systemPackages = with pkgs; [
