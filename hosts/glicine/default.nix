@@ -19,6 +19,7 @@ with lib.my;
       bspwm.enable = true;
       media.mpv.enable = true;
       media.ncmpcpp.enable = true;
+      media.spotify.enable = true;
       polybar.enable = true;
       term.alacritty = {
         enable = true;
