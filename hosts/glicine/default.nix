@@ -19,7 +19,10 @@ with lib.my;
       bspwm.enable = true;
       media.mpv.enable = true;
       media.ncmpcpp.enable = true;
+      media.nomacs.enable = true;
       media.spotify.enable = true;
+      office.latex.enable = true;
+      office.zathura.enable = true;
       polybar.enable = true;
       term.alacritty = {
         enable = true;
