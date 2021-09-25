@@ -53,6 +53,7 @@ with lib.my;
 
     services.devmon.enable = true;
     services.dunst.enable = true;
+    services.keychain.enable = true;
     services.mpd.enable = true;
     services.ssh.enable = true;
 
