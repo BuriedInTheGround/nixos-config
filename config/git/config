@@ -2,7 +2,7 @@
 	name = Simone Ragusa
 	email = simone99.as@gmail.com
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=2 -RFX --mouse --wheel-lines 3
 	whitespace = trailing-space,space-before-tab
 [init]
 	defaultBranch = main
