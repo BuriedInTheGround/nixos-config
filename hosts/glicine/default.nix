@@ -38,7 +38,7 @@ with lib.my;
 
     editors.vim = {
       enable = true;
-      supportLSP = [ "go" "svelte" ]; # No `nix` for now, as it's too slow.
+      supportLSP = [ "bash" "go" "svelte" ]; # No `nix` for now, as it's too slow.
       supportTreesitter = [ "bash" "go" "nix" "svelte" "yaml" ];
     };
 
