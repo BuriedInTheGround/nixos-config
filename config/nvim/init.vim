@@ -298,8 +298,8 @@ EOF
 
 " Custom Mappings {{{
 " Change Theme
-nnoremap <leader>e1 :call ColorMonokai()<CR>
-nnoremap <leader>e2 :call ColorNord()<CR>
+nnoremap <leader>c1 :call ColorMonokai()<CR>
+nnoremap <leader>c2 :call ColorNord()<CR>
 
 " Turn Syntax ON/OFF
 nnoremap <leader>sh :call ChangeSyntaxHighlighting()<CR>
