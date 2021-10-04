@@ -61,6 +61,7 @@ with lib.my;
     shell.cava.enable = true;
     shell.cmatrix.enable = true;
     shell.direnv.enable = true;
+    shell.dog.enable = true;
     shell.duf.enable = true;
     shell.dust.enable = true;
     shell.exa.enable = true;
