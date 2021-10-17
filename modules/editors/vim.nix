@@ -80,6 +80,7 @@ in {
             nvim-web-devicons
             plenary-nvim
             telescope-nvim
+            telescope-fzf-native-nvim
 
             # TODO: remove when https://github.com/cstrahan/tree-sitter-nix/issues/17 is solved.
             vim-nix

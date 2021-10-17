@@ -137,7 +137,7 @@ on_attach = function(client, bufnr)
     buf_set_keymap('n', '[d',        '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', ']d',        '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', '<Space>q',  '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-    buf_set_keymap('n', '<Space>f',  '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+    buf_set_keymap('n', '<Space>fo', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
 capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -263,6 +263,8 @@ require('telescope').setup{
         },
     }
 }
+
+require('telescope').load_extension('fzf')
 EOF
 
 " Neovim Treesitter Playground
