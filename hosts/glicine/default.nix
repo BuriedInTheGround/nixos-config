@@ -76,6 +76,7 @@ with lib.my;
     shell.procs.enable = true;
     shell.qalc.enable = true;
     shell.rg.enable = true;
+    shell.rip.enable = true;
     shell.top = {
       enable = true;
       enableHtop = true;
