@@ -17,7 +17,9 @@ in {
 
       (writeScriptBin "myrofi" ''
         #!${stdenv.shell}
-        exec ${unstable.pkgs.rofi}/bin/rofi -m -1 -no-fixed-num-lines "$@"
+        exec ${unstable.pkgs.rofi}/bin/rofi -monitor -1 \
+                                            -matching fuzzy \
+                                            -no-fixed-num-lines "$@"
       '')
     ];
 
