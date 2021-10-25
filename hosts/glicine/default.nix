@@ -12,6 +12,7 @@ with lib.my;
   modules = {
     desktop = {
       apps.flameshot.enable = true;
+      apps.logseq.enable = true;
       apps.pavuc.enable = true;
       apps.rofi.enable = true;
       apps.telegram.enable = true;
