@@ -61,7 +61,10 @@ with lib.my;
     shell.bat.enable = true;
     shell.cava.enable = true;
     shell.cmatrix.enable = true;
-    shell.direnv.enable = true;
+    shell.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     shell.dog.enable = true;
     shell.duf.enable = true;
     shell.dust.enable = true;
