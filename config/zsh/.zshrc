@@ -39,7 +39,7 @@ fi
 
 # Source zgen.
 export ZGEN_AUTOLOAD_COMPINIT=0
-source $ZGEN_SOURCE
+source $ZGEN_ZSHFILE
 
 # Initialize zgen and create a save if needed.
 if ! zgen saved; then

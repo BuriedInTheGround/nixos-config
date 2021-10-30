@@ -37,7 +37,7 @@ in {
       ZDOTDIR              = "$XDG_CONFIG_HOME/zsh";
       ZSH_CACHE            = "$XDG_CACHE_HOME/zsh";
       ZGEN_DIR             = "$XDG_DATA_HOME/zsh";
-      ZGEN_SOURCE          = "$ZGEN_DIR/zgen.zsh";
+      ZGEN_ZSHFILE         = "$ZGEN_DIR/zgen.zsh";
       ZGEN_RESET_ON_CHANGE = "$ZDOTDIR/.zshrc";
     };
 
