@@ -39,6 +39,9 @@ with lib.my;
           '';
           set = "term";
         })
+        (nerdfonts.override {
+          fonts = [ "DejaVuSansMono" ];
+        })
       ];
 
       # Enable font antialiasing and set default fonts.
@@ -47,7 +50,12 @@ with lib.my;
         antialias = true;
         defaultFonts = {
           emoji = [ "Noto Color Emoji" ];
-          monospace = [ "DejaVu Sans Mono" ];
+          monospace = [
+            "Iosevka Term Extended"
+            "Noto Color Emoji"
+            "DejaVuSansMono Nerd Font"
+            "DejaVu Sans Mono"
+          ];
           sansSerif = [ "DejaVu Sans" ];
           serif = [ "DejaVu Serif" ];
         };
