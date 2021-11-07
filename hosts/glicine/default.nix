@@ -12,6 +12,7 @@ with lib.my;
   modules = {
     desktop = {
       apps.flameshot.enable = true;
+      apps.gimp.enable = true;
       apps.logseq.enable = true;
       apps.pavuc.enable = true;
       apps.rofi.enable = true;
