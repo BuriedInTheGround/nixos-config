@@ -12,6 +12,15 @@
 " Enable 24-bit RGB, Set Opaque Background
 set termguicolors
 
+" Link colors for nvim-cmp
+function! LinkCmpColors()
+    "hi link CmpItemAbbr Error
+    hi link CmpItemAbbrDeprecated LspDiagnosticsUnderlineError
+    hi link CmpItemAbbrMatchFuzzy Italic
+    hi link CmpItemKind Number
+    hi link CmpItemMenu LspCodeLens
+endfunction
+
 " Apply Theme
 syntax on
 let g:airline_theme='nord'
@@ -20,6 +29,7 @@ let g:nord_italic=1
 let g:nord_italic_comments=1
 let $BAT_THEME = 'Nord'
 colorscheme nord
+call LinkCmpColors()
 
 " Monokai Mode (Dark)
 function! ColorMonokai()
@@ -28,6 +38,7 @@ function! ColorMonokai()
     let g:monokai_term_italic=1
     let $BAT_THEME = 'Monokai Extended'
     colorscheme monokai
+    call LinkCmpColors()
 endfunction
 
 " Nord Mode (Dark)
@@ -39,6 +50,7 @@ function! ColorNord()
     let g:nord_italic_comments=1
     let $BAT_THEME = 'Nord'
     colorscheme nord
+    call LinkCmpColors()
 endfunction
 
 function! ChangeSyntaxHighlighting()
@@ -52,12 +64,14 @@ endfunction
 
 " Other Configurations {{{
 set autowrite
+set updatetime=100  " Faster updates, better UX
+set hidden  " Don't unload buffers when abandoned
 set tabstop=4 softtabstop=0 shiftwidth=4 expandtab smarttab
 set encoding=utf-8
 set splitright
 set inccommand=nosplit
 set omnifunc=syntaxcomplete#Complete  " Http://vim.wikia.com/wiki/Omni_completion
-set mouse=a  " Enable Mouse Mode for All Modes
+set mouse=nv  " Enable mouse support only for Normal and Visual modes
 
 " Set the Leader
 nnoremap <Space> <Nop>
@@ -73,6 +87,12 @@ autocmd BufLeave term://* stopinsert
 " UI {{{
 set cursorline
 set colorcolumn=80
+set scrolloff=8  " Keep at least 8 lines above and below the cursor
+
+" Cool Floating Window
+set pumblend=18
+set wildmode="longest:full"
+set wildoptions="pum"
 
 " Turn Hybrid Line Numbers ON
 set number relativenumber
@@ -92,8 +112,18 @@ augroup dynamic_smartcase
     autocmd CmdLineLeave * set smartcase
 augroup END
 
-" Show `▸▸` for Tabs & `·` for Trailing Whitespaces
-set list listchars=tab:▸▸,trail:·
+" Highlight after Yank
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup END
+
+" Enable List Mode symbols:
+" ->  `⇥ ` for Tabs
+" ->  `·` for Trailing Whitespaces
+" ->  `⍽` for Non-Breaking Spaces
+" ->  `↵` for EOLs
+set list listchars=tab:⇥\ ,trail:·,nbsp:⍽,eol:↵
 " }}}
 
 " Section Folding {{{
@@ -146,8 +176,11 @@ capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- Setup luasnip
+-- Load luasnip
 local luasnip = require 'luasnip'
+
+-- Load lspkind
+local lspkind = require 'lspkind'
 
 -- Setup nvim-cmp
 local cmp = require 'cmp'
@@ -187,9 +220,32 @@ cmp.setup {
             end
         end,
     },
-    sources = {
+    sources = cmp.config.sources({
+        { name = 'nvim_lua' },
         { name = 'nvim_lsp' },
+        { name = 'path' },
         { name = 'luasnip' },
+    }, {
+        { name = 'latex_symbols' },
+        { name = 'emoji' },
+        { name = 'buffer', keyword_length = 5 },
+    }),
+    formatting = {
+        format = lspkind.cmp_format {
+            with_text = true,
+            menu = {
+                buffer = "[Buffer]",
+                nvim_lsp = "[LSP]",
+                nvim_lua = "[API]",
+                path = "[Path]",
+                luasnip = "[LuaSnip]",
+                latex_symbols = "[LaTeX]",
+                emoji = "[Emoji]",
+            },
+        },
+    },
+    experimental = {
+        ghost_text = true,
     },
 }
 EOF
@@ -256,6 +312,9 @@ lua << EOF
 local actions = require('telescope.actions')
 require('telescope').setup{
     defaults = {
+        prompt_prefix = "❯ ",
+        selection_caret = "❯ ",
+        color_devicons = true,
         mappings = {
             i = {
                 ["<Esc>"] = actions.close
@@ -293,9 +352,8 @@ EOF
 " }}}
 
 " Filetype-Specific {{{
-"
-" Nothing to see here...
-"
+" Use the `tex` filetype by default instead of `plaintex`
+let g:tex_flavor = "latex"
 " }}}
 
 " Custom Mappings {{{
@@ -326,9 +384,9 @@ inoremap <C-Space> <C-x><C-o>
 inoremap <C-@> <C-Space>
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files disable_devicons=true<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep disable_devicons=true<CR>
-nnoremap <leader>fb <cmd>Telescope buffers disable_devicons=true<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<CR>
+nnoremap <leader>fg <cmd>Telescope live_grep<CR>
+nnoremap <leader>fb <cmd>Telescope buffers<CR>
 nnoremap <leader>fh <cmd>Telescope help_tags<CR>
 " }}}
 

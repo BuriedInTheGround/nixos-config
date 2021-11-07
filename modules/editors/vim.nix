@@ -16,9 +16,11 @@ in {
       Supported languages:
       - bash (not sure)
       - go
+      - latex
       - nix
       - python
       - svelte (not sure)
+      - vim
       '' (types.listOf types.str);
 
     supportTreesitter = mkOpt' [] ''
@@ -33,9 +35,11 @@ in {
     user.packages = with pkgs.unstable; [
       (mkIf (elem "bash" cfg.supportLSP)   nodePackages.bash-language-server)
       (mkIf (elem "go" cfg.supportLSP)     gopls)
+      (mkIf (elem "latex" cfg.supportLSP)  texlab)
       (mkIf (elem "nix" cfg.supportLSP)    rnix-lsp)
       (mkIf (elem "python" cfg.supportLSP) pyright)
       (mkIf (elem "svelte" cfg.supportLSP) nodePackages.svelte-language-server)
+      (mkIf (elem "vim" cfg.supportLSP)    nodePackages.vim-language-server)
     ];
 
     programs.neovim = {
@@ -49,13 +53,15 @@ in {
           source ${nvimConfigDir}/init.vim
           ${if (elem "bash" cfg.supportLSP)   then "source ${nvimConfigDir}/lang/bash.vim"   else ""}
           ${if (elem "go" cfg.supportLSP)     then "source ${nvimConfigDir}/lang/go.vim"     else ""}
+          ${if (elem "latex" cfg.supportLSP)  then "source ${nvimConfigDir}/lang/latex.vim"  else ""}
           ${if (elem "nix" cfg.supportLSP)    then "source ${nvimConfigDir}/lang/nix.vim"    else ""}
           ${if (elem "python" cfg.supportLSP) then "source ${nvimConfigDir}/lang/python.vim" else ""}
           ${if (elem "svelte" cfg.supportLSP) then "source ${nvimConfigDir}/lang/svelte.vim" else ""}
+          ${if (elem "vim" cfg.supportLSP)    then "source ${nvimConfigDir}/lang/vim.vim"    else ""}
         '';
         packages.myPlugins = with pkgs.unstable.vimPlugins; {
           start = [
-            # Tree-sitter.
+            # --- Tree-sitter ---
             (nvim-treesitter.withPlugins (
               plugins: map (x: plugins."${x}") (
                 map (x: "tree-sitter-" + x) cfg.supportTreesitter)
@@ -63,27 +69,36 @@ in {
             nvim-treesitter-textobjects
             playground # View tree-sitter information directly in Neovim!
 
-            # LSP & Autocompletion.
-            nvim-lspconfig
-            nvim-cmp
-            cmp-nvim-lsp
-            cmp_luasnip
-            luasnip
+            # --- LSP & related ---
+            nvim-lspconfig # Quickstart configurations for LSP.
+            cmp-nvim-lsp # nvim-cmp source for LSP.
+            cmp-nvim-lua # nvim-cmp source for Neovim Lua APIs.
+            cmp-buffer # nvim-cmp source for buffer words.
+            cmp-path # nvim-cmp source for path files/directories.
+            nvim-cmp # Completion engine.
+            cmp_luasnip # nvim-cmp source LuaSnip.
+            luasnip # Snippet engine.
+            cmp-latex-symbols # nvim-cmp source for latex symbols.
+            cmp-emoji # nvim-cmp source for emojis.
+            lspkind-nvim # VSCode-like pictograms for LSP.
 
-            # Theme and airline.
+            # --- Theme and airline ---
             nord-vim
             vim-monokai
             vim-airline
             vim-airline-themes
 
-            # Telescope.
+            # --- Telescope ---
             nvim-web-devicons
             plenary-nvim
             telescope-nvim
             telescope-fzf-native-nvim
 
-            # TODO: remove when https://github.com/cstrahan/tree-sitter-nix/issues/17 is solved.
-            vim-nix
+            # --- Git ---
+            vim-fugitive
+
+            # --- Languages ---
+            vim-nix # For a good indentation.
           ];
         };
       };

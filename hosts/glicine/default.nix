@@ -40,8 +40,26 @@ with lib.my;
 
     editors.vim = {
       enable = true;
-      supportLSP = [ "bash" "go" "svelte" ]; # No `nix` for now, as it's too slow.
-      supportTreesitter = [ "bash" "go" "nix" "svelte" "yaml" ];
+      supportLSP = [
+        "bash"
+        "go"
+        "latex"
+        "nix"
+        "svelte"
+        "vim"
+      ];
+      supportTreesitter = [
+        "bash"
+        "go"
+        "json"
+        "latex"
+        "lua"
+        "markdown"
+        "nix"
+        "svelte"
+        "vim"
+        "yaml"
+      ];
     };
 
     hardware.amd.enable = true;
