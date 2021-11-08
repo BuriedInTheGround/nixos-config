@@ -48,16 +48,17 @@ in {
       vimAlias = true;
       configure = let
         nvimConfigDir = "${config.user.home}/.config/nvim";
+        lspServersDir = "${nvimConfigDir}/lua/interrato/lsp/servers";
       in {
         customRC = ''
-          source ${nvimConfigDir}/init.vim
-          ${if (elem "bash" cfg.supportLSP)   then "source ${nvimConfigDir}/lang/bash.vim"   else ""}
-          ${if (elem "go" cfg.supportLSP)     then "source ${nvimConfigDir}/lang/go.vim"     else ""}
-          ${if (elem "latex" cfg.supportLSP)  then "source ${nvimConfigDir}/lang/latex.vim"  else ""}
-          ${if (elem "nix" cfg.supportLSP)    then "source ${nvimConfigDir}/lang/nix.vim"    else ""}
-          ${if (elem "python" cfg.supportLSP) then "source ${nvimConfigDir}/lang/python.vim" else ""}
-          ${if (elem "svelte" cfg.supportLSP) then "source ${nvimConfigDir}/lang/svelte.vim" else ""}
-          ${if (elem "vim" cfg.supportLSP)    then "source ${nvimConfigDir}/lang/vim.vim"    else ""}
+          luafile ${nvimConfigDir}/init.lua
+          ${if (elem "bash" cfg.supportLSP)   then "luafile ${lspServersDir}/bash.lua"   else ""}
+          ${if (elem "go" cfg.supportLSP)     then "luafile ${lspServersDir}/go.lua"     else ""}
+          ${if (elem "latex" cfg.supportLSP)  then "luafile ${lspServersDir}/latex.lua"  else ""}
+          ${if (elem "nix" cfg.supportLSP)    then "luafile ${lspServersDir}/nix.lua"    else ""}
+          ${if (elem "python" cfg.supportLSP) then "luafile ${lspServersDir}/python.lua" else ""}
+          ${if (elem "svelte" cfg.supportLSP) then "luafile ${lspServersDir}/svelte.lua" else ""}
+          ${if (elem "vim" cfg.supportLSP)    then "luafile ${lspServersDir}/vim.lua"    else ""}
         '';
         packages.myPlugins = with pkgs.unstable.vimPlugins; {
           start = [
