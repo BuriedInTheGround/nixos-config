@@ -29,7 +29,7 @@
 
 window {
     border: 1px;
-    font: "IBM Plex Mono SemiBold 11";
+    font: "IBM Plex Mono SmBld 11";
     location: center;
     anchor: center;
     width: 30%;
@@ -44,7 +44,7 @@ inputbar {
 /* +++++ prompt +++++ */
 
 prompt {
-    font: "IBM Plex Mono SemiBold 12";
+    font: "IBM Plex Mono SmBld 12";
     padding: 10px;
     text-color: @nord12;
 }

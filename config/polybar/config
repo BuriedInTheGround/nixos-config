@@ -19,7 +19,7 @@ override-redirect = ${config.override-redirect}
 wm-restack = ${config.wm-restack}
 
 # Fonts (used for all bars).
-font-0 = "IBM Plex Mono SemiBold:size=10;3"
+font-0 = "IBM Plex Mono SmBld:size=10;3"
 font-1 = "Font Awesome 5 Free Solid:size=12;3"
 font-2 = "Font Awesome 5 Free Regular:size=12;3"
 font-3 = "Font Awesome 5 Brands:size=12;3"
