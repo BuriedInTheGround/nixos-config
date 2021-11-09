@@ -40,7 +40,7 @@ with lib.my;
           set = "term";
         })
         (nerdfonts.override {
-          fonts = [ "DejaVuSansMono" ];
+          fonts = [ "DejaVuSansMono" "IBMPlexMono" ];
         })
       ];
 
