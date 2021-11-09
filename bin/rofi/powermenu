@@ -6,7 +6,7 @@ MENU="$(myrofi -no-lazy-grab -sep "|" -dmenu -i \
 -columns 1 \
 -theme-str 'window {width: 15%;}' \
 -selected-row 2 \
-<<< "  Shutdown|  Reboot|  Lock|  Suspend|  Logout")"
+<<< "  Shutdown|  Reboot|  Lock|  Suspend|  Logout")"
 case "$MENU" in
   *Shutdown) systemctl -i poweroff;;
   *Reboot) systemctl reboot;;
