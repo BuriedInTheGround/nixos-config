@@ -30,14 +30,33 @@ bspc config presel_feedback_color  '#81a1c1'
 bspc config window_gap             8
 
 # Behaviour.
+bspc config ignore_ewmh_focus         true
 bspc config remove_disabled_monitors  true
 bspc config remove_unplugged_monitors true
 bspc config split_ratio               0.52
 
 # }}}
 
-# Make sure to focus desktop 1.
-bspc desktop --focus 1
+# BSPWM Rules + Programs startup {{{
+
+# Rules
+bspc rule -r "*"
+bspc rule -a Firefox         desktop=1 follow=on
+bspc rule -a Alacritty       desktop=2 follow=on
+bspc rule -a TelegramDesktop desktop=4 follow=on
+bspc rule -a Gimp            desktop=5 follow=on
+bspc rule -a Gimp-2.10       desktop=5 follow=on
+bspc rule -a Zathura         desktop=9 follow=on
+
+# Autostart programs
+startup_lock_file=/tmp/bspwm-startup.lock
+if [ ! -f $startup_lock_file ]; then
+    touch $startup_lock_file
+    firefox &
+    alacritty &
+fi
+
+# }}}
 
 # Make sure XKB keymap is applied.
 setxkbmap
