@@ -40,8 +40,8 @@ vim.opt.splitright = true -- Splitting puts the new window on the right
 
 -- Neovim Terminal
 vim.cmd [[
-  autocmd BufWinEnter,WinEnter term://* startinsert
-  autocmd BufLeave term://* stopinsert
+  " Enter terminal-mode automatically
+  autocmd TermOpen * startinsert
 ]]
 
 -- UI

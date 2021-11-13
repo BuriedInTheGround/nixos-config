@@ -30,8 +30,11 @@ nnoremap("<C-h>", "<C-w><C-h>")
 -- Exit terminal-mode with <Space><Esc>
 tnoremap("<Space><Esc>", "<C-\\><C-n>")
 
+-- Make terminal window small
+nnoremap("<Leader>tt", "<Cmd>lua require('interrato.terminal').make_small()<CR>")
+
 -- Toggle section folding with <CR>
-nnoremap("<CR>", "za")
+nnoremap("<Space><Space>", "za")
 
 -- Avoid stupid typos
 vim.cmd [[
