@@ -75,15 +75,17 @@ if [[ $TERM != dumb ]]; then
   autoload -Uz compinit
   for dump in $ZSH_CACHE/zcompdump(N.mh+24); do
     compinit -u -d "$ZSH_CACHE/zcompdump"
+    touch -c "$ZSH_CACHE/zcompdump" # Update time even with no edits.
   done
   compinit -C -d "$ZSH_CACHE/zcompdump"
 
   # Same for bashcompinit...
   autoload -Uz bashcompinit
   for dump in $ZSH_CACHE/zbashcompdump(N.mh+24); do
-    compinit -u -d "$ZSH_CACHE/zbashcompdump"
+    bashcompinit -u -d "$ZSH_CACHE/zbashcompdump"
+    touch -c "$ZSH_CACHE/zbashcompdump" # Update time even with no edits.
   done
-  compinit -C -d "$ZSH_CACHE/zbashcompdump"
+  bashcompinit -C -d "$ZSH_CACHE/zbashcompdump"
 
   # Apply theme.
   autoload -Uz promptinit && promptinit

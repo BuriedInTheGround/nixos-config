@@ -5,6 +5,7 @@ alias ....='cd ../../..'
 
 # Less typing exit and clear. ⚡
 alias q='exit'
+alias Q='exit'
 alias clr='clear'
 
 alias cp='cp -i'     # Ask before overwriting files.
