@@ -57,11 +57,12 @@ ln -s /mnt/etc/nixos /etc/nixos
 9. (Optional) Put the files you moved in (4) into your host folder.
 10. (Optional) Rename `hosts/<your-hostname>/configuration.nix` to
    `hosts/<your-hostname>/default.nix`.
-11. (Optional) Customize `hosts/<your-hostname>/default.nix` my adding modules
+11. (Optional) Customize `hosts/<your-hostname>/default.nix` by adding modules
     and NixOS settings.
 12. (Optional) Set your username by changing my default (`"simone"`) in
    `modules/options.nix`.
-13. (Optional) Add your changes with git, e.g.
+13. (Optional) Add your changes with git (mandatory if you actually made
+    changes), e.g.
 ```shell
 git add hosts/<your-hostname>
 git add modules/options.nix
@@ -73,3 +74,4 @@ nixos-install --root /mnt --flake /mnt/etc/nixos#<your-hostname> --impure
 15. (Optional) Use `nixos-enter` to setup some files or folders in advance.
 16. Reboot.
 17. Change your `root` and user password.
+18. Enjoy your system! 🌸
