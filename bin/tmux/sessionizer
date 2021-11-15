@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# Select the folder for the tmux session to be started.
+if [[ $# -eq 1 ]]; then
+    startdir=$1
+else
+    startdir=$(fd . ~/ ~/Projects ~/Documents --max-depth 1 --type d | fzf)
+fi
+
+# If not folder is selected, exit gracefully.
+if [[ -z $startdir ]]; then
+    echo 'No folder selected. Exiting...'
+    exit 0
+fi
+
+# Extract the directory name, and trim it if it's too long.
+startdir_name=$(basename "$startdir" | tr . _)
+if [[ ${#startdir_name} -gt 7 ]]; then
+    startdir_name="${startdir_name::6}…"
+fi
+
+# If we are not inside tmux and tmux server isn't running, let's create the new
+# session directly, so that we also enter tmux.
+tmux_running=$(pgrep tmux)
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s "$startdir_name" -c "$startdir"
+    exit 0
+fi
+
+# Otherwise tmux server is running, so let's create the new session in a
+# detached fashion.
+if ! tmux has-session -t "$startdir_name" 2> /dev/null; then
+    tmux new-session -ds "$startdir_name" -c "$startdir"
+fi
+
+# Finally, if we are not inside tmux we attach to the create session, otherwise
+# we just switch to it.
+if [[ -z $TMUX ]]; then
+    tmux attach-session -t "$startdir_name"
+else
+    tmux switch-client -t "$startdir_name"
+fi

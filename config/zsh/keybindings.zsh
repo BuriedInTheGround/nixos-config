@@ -99,3 +99,7 @@ bindkey "^[[3~" delete-char
 # [EXTRA] bindkey -M viins '^X,' _history-complete-newer \
 # [EXTRA]   '^X/' _history-complete-older \
 # [EXTRA]   '^X`' _bash_complete-word
+
+# Launch FZF to search for a directory in my $HOME, Projects, and Documents
+# folders and create a new tmux session on it.
+bindkey -s ^f "$MY_NIXOS_BIN/tmux/sessionizer\n"
