@@ -18,6 +18,7 @@ and [passion](https://www.dictionary.com/browse/passion).
 | **Launcher**   | Rofi                      |
 | **Shell**      | Zsh with Zgen             |
 | **Status Bar** | Polybar                   |
+| **Terminal**   | Alacritty + tmux          |
 | **WM**         | bspwm                     |
 
 ## Quickstart
