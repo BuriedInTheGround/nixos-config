@@ -46,6 +46,9 @@ let
     # Instant normal mode in Vim.
     set-option -sg escape-time 0
 
+    # As suggested by Neovim checkhealth...
+    set-option -g focus-events on
+
     # Big scrollback buffer size.
     set-option -g history-limit 50000
 
