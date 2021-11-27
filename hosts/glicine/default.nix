@@ -97,6 +97,7 @@ with lib.my;
     shell.fzf.enable = true;
     shell.git.enable = true;
     shell.gping.enable = true;
+    shell.httpie.enable = true;
     shell.neofetch.enable = true;
     shell.pastel.enable = true;
     shell.procs.enable = true;
