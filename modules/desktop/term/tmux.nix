@@ -5,6 +5,7 @@ with lib.my;
 
 let
   cfg = config.modules.desktop.term.tmux;
+  configDir = config.my.configDir;
 
   tmuxConf = ''
     # Enable 24-bit TrueColor.
@@ -84,5 +85,7 @@ in {
         TMUX_TMPDIR = ''''${XDG_RUNTIME_DIR:-"/run/user/$(id -u)"}'';
       };
     };
+
+    home.configFile."tmux".source = "${configDir}/tmux";
   };
 }
