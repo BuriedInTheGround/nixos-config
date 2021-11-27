@@ -50,17 +50,22 @@ with lib.my;
         "latex"
         "nix"
         "svelte"
+        "tailwindcss"
+        "typescript"
         "vim"
       ];
       supportTreesitter = [
         "bash"
+        "css"
         "go"
+        "javascript"
         "json"
         "latex"
         "lua"
         "markdown"
         "nix"
         "svelte"
+        "typescript"
         "vim"
         "yaml"
       ];

@@ -14,12 +14,14 @@ in {
       List of programming languages for which activate LSP support.
 
       Supported languages:
-      - bash (not sure)
+      - bash
       - go
       - latex
       - nix
       - python
-      - svelte (not sure)
+      - svelte
+      - tailwindcss
+      - typescript
       - vim
       '' (types.listOf types.str);
 
@@ -33,13 +35,15 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs.unstable; [
-      (mkIf (elem "bash" cfg.supportLSP)   nodePackages.bash-language-server)
-      (mkIf (elem "go" cfg.supportLSP)     gopls)
-      (mkIf (elem "latex" cfg.supportLSP)  texlab)
-      (mkIf (elem "nix" cfg.supportLSP)    rnix-lsp)
-      (mkIf (elem "python" cfg.supportLSP) pyright)
-      (mkIf (elem "svelte" cfg.supportLSP) nodePackages.svelte-language-server)
-      (mkIf (elem "vim" cfg.supportLSP)    nodePackages.vim-language-server)
+      (mkIf (elem "bash" cfg.supportLSP)        nodePackages.bash-language-server)
+      (mkIf (elem "go" cfg.supportLSP)          gopls)
+      (mkIf (elem "latex" cfg.supportLSP)       texlab)
+      (mkIf (elem "nix" cfg.supportLSP)         rnix-lsp)
+      (mkIf (elem "python" cfg.supportLSP)      pyright)
+      (mkIf (elem "svelte" cfg.supportLSP)      nodePackages.svelte-language-server)
+      (mkIf (elem "tailwindcss" cfg.supportLSP) nodePackages."@tailwindcss/language-server")
+      (mkIf (elem "typescript" cfg.supportLSP)  nodePackages.typescript-language-server)
+      (mkIf (elem "vim" cfg.supportLSP)         nodePackages.vim-language-server)
     ];
 
     programs.neovim = {
@@ -52,13 +56,15 @@ in {
       in {
         customRC = ''
           luafile ${nvimConfigDir}/init.lua
-          ${if (elem "bash" cfg.supportLSP)   then "luafile ${lspServersDir}/bash.lua"   else ""}
-          ${if (elem "go" cfg.supportLSP)     then "luafile ${lspServersDir}/go.lua"     else ""}
-          ${if (elem "latex" cfg.supportLSP)  then "luafile ${lspServersDir}/latex.lua"  else ""}
-          ${if (elem "nix" cfg.supportLSP)    then "luafile ${lspServersDir}/nix.lua"    else ""}
-          ${if (elem "python" cfg.supportLSP) then "luafile ${lspServersDir}/python.lua" else ""}
-          ${if (elem "svelte" cfg.supportLSP) then "luafile ${lspServersDir}/svelte.lua" else ""}
-          ${if (elem "vim" cfg.supportLSP)    then "luafile ${lspServersDir}/vim.lua"    else ""}
+          ${if (elem "bash" cfg.supportLSP)        then "luafile ${lspServersDir}/bash.lua"        else ""}
+          ${if (elem "go" cfg.supportLSP)          then "luafile ${lspServersDir}/go.lua"          else ""}
+          ${if (elem "latex" cfg.supportLSP)       then "luafile ${lspServersDir}/latex.lua"       else ""}
+          ${if (elem "nix" cfg.supportLSP)         then "luafile ${lspServersDir}/nix.lua"         else ""}
+          ${if (elem "python" cfg.supportLSP)      then "luafile ${lspServersDir}/python.lua"      else ""}
+          ${if (elem "svelte" cfg.supportLSP)      then "luafile ${lspServersDir}/svelte.lua"      else ""}
+          ${if (elem "tailwindcss" cfg.supportLSP) then "luafile ${lspServersDir}/tailwindcss.lua" else ""}
+          ${if (elem "typescript" cfg.supportLSP)  then "luafile ${lspServersDir}/typescript.lua"  else ""}
+          ${if (elem "vim" cfg.supportLSP)         then "luafile ${lspServersDir}/vim.lua"         else ""}
         '';
         packages.myPlugins = with pkgs.unstable.vimPlugins; {
           start = [
