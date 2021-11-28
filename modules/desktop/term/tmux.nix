@@ -8,8 +8,8 @@ let
   configDir = config.my.configDir;
 
   tmuxConf = ''
-    # Enable 24-bit TrueColor.
-    set-option -g  default-terminal   "screen-256color"
+    # Enable 24-bit TrueColor and italics.
+    set-option -g  default-terminal   "tmux-256color"
     set-option -ag terminal-overrides ",xterm-256color:RGB"
 
     # Style the status bar.
