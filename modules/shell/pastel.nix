@@ -11,6 +11,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.pastel ];
+    user.packages = with pkgs; [
+      pastel
+
+      xcolor # For using `pastel pick`.
+    ];
   };
 }
