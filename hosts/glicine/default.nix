@@ -24,6 +24,7 @@ with lib.my;
       media.nomacs.enable = true;
       media.spotify.enable = true;
       office.latex.enable = true;
+      office.libreoffice.enable = true;
       office.zathura.enable = true;
       polybar.enable = true;
       term.alacritty = {
