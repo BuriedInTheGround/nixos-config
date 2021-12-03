@@ -8,6 +8,9 @@ alias q='exit'
 alias Q='exit'
 alias clr='clear'
 
+# Make sudo working with aliases.
+alias sudo='sudo '
+
 alias cp='cp -i'     # Ask before overwriting files.
 alias mv='mv -i'     # Ask before overwriting files.
 alias rm='rm -i'     # Prompt before every removal.
@@ -16,6 +19,11 @@ alias t='tree'       # Fast tree. ⚡
 alias ta='t --all'   # Include hidden and git-ignored files.
 alias md='mkdir -pv' # Make parent directories as needed.
 alias rr='rm -r'     # Remove recursively.
+
+# For working with my NixOS configuration.
+alias cdot="cd $MY_NIXOS_CONFIG"
+alias edot="pushd $MY_NIXOS_CONFIG && $EDITOR . && popd"
+alias nixdot="nixos-rebuild switch --flake $MY_NIXOS_CONFIG# --impure"
 
 # Clipboard Mac-like.
 if command -v xclip > /dev/null; then

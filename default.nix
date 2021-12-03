@@ -9,8 +9,9 @@ with lib.my;
     inputs.home-manager.nixosModules.home-manager
   ] ++ (mapModulesRec' import (toString ./modules));
 
-  # Where my custom binaries and wallpapers are.
+  # Where my custom binaries, configuration, and wallpapers are placed.
   environment.variables.MY_NIXOS_BIN = "${config.my.dir}/bin";
+  environment.variables.MY_NIXOS_CONFIG = "${config.my.dir}";
   environment.variables.MY_NIXOS_WALLS = "${config.my.dir}/wallpapers";
 
   # Allow unfree packages from nixpkgs.
