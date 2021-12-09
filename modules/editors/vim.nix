@@ -101,6 +101,9 @@ in {
             telescope-nvim
             telescope-fzf-native-nvim
 
+            # --- Various Tools ---
+            markdown-preview-nvim
+
             # --- Git ---
             vim-fugitive
 
