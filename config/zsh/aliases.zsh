@@ -13,7 +13,6 @@ alias sudo='sudo '
 
 alias cp='cp -i'     # Ask before overwriting files.
 alias mv='mv -i'     # Ask before overwriting files.
-alias rm='rm -i'     # Prompt before every removal.
 
 alias t='tree'       # Fast tree. ⚡
 alias ta='t --all'   # Include hidden and git-ignored files.
