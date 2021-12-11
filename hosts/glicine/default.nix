@@ -38,7 +38,6 @@ with lib.my;
       xsecurelock.enable = true;
     };
 
-    develop.flyctl.enable = true;
     develop.gcc.enable = true;
     develop.go.enable = true;
     develop.node.enable = true;
