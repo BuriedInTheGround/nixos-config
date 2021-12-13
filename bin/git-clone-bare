@@ -1,0 +1,109 @@
+#!/usr/bin/env bash
+
+usage="Usage:
+    $(basename "$0") [-h | --help] REPO_URL [PATH]
+
+Options:
+    -h, --help  Show this help message.
+
+REPO_URL can be any Git URL as defined in git-clone(1).
+
+PATH defines the path in which the repository will be cloned to. If no value is
+given, the repo will be put into a new directory inside the current working
+directory. If the name of the repo cannot be retrieved, giving a PATH becomes
+mandatory."
+
+cloneBare() {
+    REPO_URL="$1"
+    DIR_PATH="$2"
+
+    if [[ -z $DIR_PATH ]]; then
+        tmp=$(echo "$1" | sed "s/^.*\///g")
+        REPO_NAME="${tmp%.git}"
+
+        if [[ -z $REPO_NAME || ! "$REPO_NAME" =~ ^[-a-zA-Z0-9_.]*$ ]]; then
+            errorWithHint 'cannot extract the repository name' 'use the PATH parameter to manually specify the target directory'
+            exit 1
+        fi
+
+        DIR_PATH="$REPO_NAME"
+    fi
+
+    DIR_PATH=${DIR_PATH%/}
+
+    if ! mkdir -p "$DIR_PATH" > /dev/null; then
+        errorf 'invalid path or repository name'
+        exit 1
+    fi
+
+    if ! git clone --bare "$REPO_URL" "$DIR_PATH/.bare"; then
+        errorf 'git clone failed'
+        exit 1
+    fi
+
+    if ! echo 'gitdir: ./.bare' > "$DIR_PATH/.git"; then
+        errorWithHint 'creation of .git failed' 'check if you have the right permissions'
+        exit 1
+    fi
+
+    if ! pushd "$DIR_PATH" > /dev/null; then
+        errorWithHint 'failed to pushd into the target directory' 'check if you have the right permissions'
+        exit 1
+    fi
+    git config --bool core.logallrefupdates true
+    git config remote.origin.url "$REPO_URL"
+    git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+    if ! popd > /dev/null; then
+        errorWithHint 'failed to popd from the target directory' 'check if you have the right permissions'
+        exit 1
+    fi
+}
+
+errorf() {
+    format="git-clone-bare: error: $1\n"
+    shift
+    # shellcheck disable=SC2059
+    printf "$format" "$@"
+}
+
+errorWithHint() {
+    printf "git-clone-bare: error: %s\n" "$1"
+    shift
+    for hint in "$@"; do
+        printf "git-clone-bare: hint: %s\n" "$hint"
+    done
+}
+
+# Parse options.
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
+    case $1 in
+        -h | --help )
+            echo "$usage"
+            exit
+            ;;
+        *)
+            errorf 'invalid option: %s' "$1"
+            echo "$usage"
+            exit 1
+    esac
+    shift
+done
+
+# Skip '--' if given.
+if [[ "$1" == '--' ]]; then
+    shift
+fi
+
+# Check if git command exists.
+if ! command -v git > /dev/null; then
+    errorWithHint 'command git not found' 'visit https://git-scm.com/downloads to download Git'
+    exit 1
+fi
+
+# Check if a repository URL is given. (It is mandatory.)
+if [[ -z $1 ]]; then
+    errorf 'missing repository url'
+fi
+
+# Clone the repo.
+cloneBare "$1" "$2"
