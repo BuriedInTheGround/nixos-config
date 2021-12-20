@@ -27,6 +27,7 @@ with lib.my;
       office.latex.enable = true;
       office.libreoffice.enable = true;
       office.zathura.enable = true;
+      office.zoom.enable = true;
       polybar.enable = true;
       term.alacritty = {
         enable = true;
