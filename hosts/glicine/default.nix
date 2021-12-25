@@ -20,6 +20,7 @@ with lib.my;
       apps.telegram.enable = true;
       browsers.firefox.enable = true;
       bspwm.enable = true;
+      media.droidcam.enable = true;
       media.mpv.enable = true;
       media.ncmpcpp.enable = true;
       media.nomacs.enable = true;
