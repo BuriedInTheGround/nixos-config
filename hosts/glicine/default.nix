@@ -23,6 +23,7 @@ with lib.my;
       media.mpv.enable = true;
       media.ncmpcpp.enable = true;
       media.nomacs.enable = true;
+      media.obs.enable = true;
       media.spotify.enable = true;
       office.latex.enable = true;
       office.libreoffice.enable = true;
