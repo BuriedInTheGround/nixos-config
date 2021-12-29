@@ -23,6 +23,11 @@ in {
       extraConfig = ''
         load-module module-switch-on-connect
       '';
+
+      # Enable realtime scheduling.
+      daemon.config = {
+        realtime-scheduling = "yes";
+      };
     };
 
     # Add the user to the `audio` group.
