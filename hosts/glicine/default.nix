@@ -18,6 +18,7 @@ with lib.my;
       apps.pavuc.enable = true;
       apps.rofi.enable = true;
       apps.telegram.enable = true;
+      apps.wine.enable = true;
       browsers.firefox.enable = true;
       bspwm.enable = true;
       media.droidcam.enable = true;
