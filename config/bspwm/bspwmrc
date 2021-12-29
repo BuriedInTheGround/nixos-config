@@ -46,6 +46,9 @@ bspc rule -a Alacritty       desktop=2 follow=on
 bspc rule -a TelegramDesktop desktop=4 follow=on
 bspc rule -a Gimp            desktop=5 follow=on
 bspc rule -a Gimp-2.10       desktop=5 follow=on
+bspc rule -a obs             desktop=6 follow=on
+bspc rule -a Pavucontrol     desktop=7 follow=on
+bspc rule -a Droidcam        desktop=7 follow=off
 bspc rule -a Zathura         desktop=9 follow=on
 
 # Autostart programs
