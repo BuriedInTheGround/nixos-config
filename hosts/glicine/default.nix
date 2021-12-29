@@ -27,6 +27,7 @@ with lib.my;
       media.nomacs.enable = true;
       media.obs.enable = true;
       media.spotify.enable = true;
+      media.yabridge.enable = true;
       office.latex.enable = true;
       office.libreoffice.enable = true;
       office.zathura.enable = true;
