@@ -16,6 +16,17 @@ in {
       yabridgectl
     ];
 
+    # Enable RealtimeKit for on demand realtime scheduling of user processes.
+    security.rtkit.enable = true;
+
+    # Let users in audio group to execute realtime processes with no memory
+    # limit.
+    security.pam.loginLimits = [
+      { domain = "@audio"; item = "memlock"; type="-"; value = "unlimited"; }
+      { domain = "@audio"; item = "rtprio";  type="-"; value = "99"; }
+      { domain = "@audio"; item = "nofile";  type="-"; value = "99999"; }
+    ];
+
     # Add the specified folder to PATH: required when using `yabridgectl sync`.
     env.PATH = [ "/etc/profiles/per-user/${config.user.name}/lib" ];
   };
