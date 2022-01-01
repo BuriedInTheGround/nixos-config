@@ -111,6 +111,7 @@ with lib.my;
     shell.gping.enable = true;
     shell.httpie.enable = true;
     shell.neofetch.enable = true;
+    shell.parted.enable = true;
     shell.pastel.enable = true;
     shell.procs.enable = true;
     shell.qalc.enable = true;
