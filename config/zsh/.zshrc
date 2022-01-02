@@ -17,13 +17,14 @@ if [[ $TERM != dumb ]]; then
   # If `fd` is present use it.
   if command -v fd > /dev/null; then
     export FZF_DEFAULT_OPTS='
-      --reverse --ansi
-      --color fg:#D8DEE9,bg:#2E3440,hl:#A3BE8C,fg+:#D8DEE9,bg+:#434C5E,hl+:#A3BE8C
-      --color pointer:#BF616A,info:#4C566A,spinner:#4C566A,header:#4C566A,prompt:#81A1C1,marker:#EBCB8B
+      --reverse --height 80% --border
+      --color bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9
+      --color header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1
+      --color fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1
     '
-    export FZF_DEFAULT_COMMAND="fd ."
+    export FZF_DEFAULT_COMMAND="fd --strip-cwd-prefix --hidden --exclude .git ."
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-    export FZF_ALT_C_COMMAND="fd -t d . $HOME" # Look for directories only.
+    export FZF_ALT_C_COMMAND="fd --strip-cwd-prefix --hidden --exclude .git --type directory ."
   fi
 
   if command -v keychain > /dev/null; then
