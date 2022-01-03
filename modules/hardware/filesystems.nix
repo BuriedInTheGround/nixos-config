@@ -13,10 +13,11 @@ in {
   config = mkIf cfg.enable {
     # Add support for more filesystems.
     environment.systemPackages = with pkgs; [
-      exfat   # ex-FAT file system implementation.
-      fuse    # Linux FUSE (Filesystem in Userspace) interface.
-      jmtpfs  # For MTP devices like Android phones.
-      ntfs3g  # FUSE-based NTFS driver with full write support.
+      exfat       # exFAT filesystem implementation.
+      exfatprogs  # exFAT filesystem userspace utilities.
+      fuse        # Linux FUSE (Filesystem in Userspace) interface.
+      jmtpfs      # For MTP devices like Android phones.
+      ntfs3g      # FUSE-based NTFS driver with full write support.
     ];
   };
 }
