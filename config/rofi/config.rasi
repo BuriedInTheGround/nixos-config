@@ -1,3 +1,2 @@
-configuration {
-    theme: "nord";
-}
+configuration {}
+@theme "nord"
