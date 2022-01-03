@@ -93,6 +93,7 @@ with lib.my;
     services.mpd.enable = true;
     services.ssh.enable = true;
 
+    shell.age.enable = true;
     shell.bat.enable = true;
     shell.cava.enable = true;
     shell.cmatrix.enable = true;
