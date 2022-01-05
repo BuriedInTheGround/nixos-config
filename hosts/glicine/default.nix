@@ -92,6 +92,7 @@ with lib.my;
     services.keychain.enable = true;
     services.mpd.enable = true;
     services.ssh.enable = true;
+    services.syncthing.enable = true;
 
     shell.age.enable = true;
     shell.bat.enable = true;
