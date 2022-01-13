@@ -186,7 +186,7 @@ if command -v fzf > /dev/null; then
           $ARGS == 'git reset'* || \
           $ARGS == 'git show'* || \
           $ARGS == 'git log'* ]]; then
-      _fzf_complete "--reverse --multi" "$@" < <(__git_log)
+      _fzf_complete "--reverse --ansi --multi" "$@" < <(__git_log)
     else
       eval "zle ${fzf_default_completion:-expand-or-complete}"
     fi
