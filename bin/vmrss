@@ -1,0 +1,124 @@
+#!/usr/bin/env bash
+
+usage="Usage:
+    $(basename "$0") [-h | --help] PID
+
+Options:
+    -h, --help  Show this help message.
+
+PID can be any valid process ID."
+
+printVmrss() {
+    local _PID="$1"
+
+    local vmrss_value
+    local vmrss_unit
+
+    while true; do
+        processExists "$_PID"
+
+        vmrss_value=$(grep -i vmrss < "/proc/$_PID/status" | awk '{print $2}')
+        vmrss_unit=$(grep -i vmrss < "/proc/$_PID/status" | awk '{print $3}')
+
+        # TODO: maybe implement something smarter here.
+        if [[ "$vmrss_unit" != "kB" ]]; then
+            errorf 'VmRSS unit is not kB'
+            exit 2
+        fi
+
+        local vmrss_bytes=$((vmrss_value * 1000))
+
+        bytesToHR "$vmrss_bytes"
+
+        sleep 1s
+    done
+}
+
+processExists() {
+    if ! ps --pid "$1" &> /dev/null; then
+        errorWithHint "no active process with PID=$1" 'use pgrep(1) to obtain the PID of a process'
+        exit 1
+    fi
+}
+
+bytesToHR() {
+    local units=(
+        $((1 << 30)):GiB
+        $((1 << 20)):MiB
+        $((1 << 10)):KiB
+        $((1)):bytes
+    )
+
+    local size
+
+    if [[ "$1" == "1" ]]; then
+        echo "1 byte"
+    else
+        for item in "${units[@]}"; do
+            local factor="${item%:*}"
+            local unit="${item#*:}"
+            if [[ "$1" -ge "$factor" ]]; then
+                size="$(bc -l <<< "$1 / $factor")"
+                printf "%.4f %s\n" "$size" "$unit"
+                break
+            fi
+        done
+    fi
+}
+
+errorf() {
+    local format
+    format="$(basename "$0"): error: $1\n"
+    shift
+    # shellcheck disable=SC2059
+    printf "$format" "$@"
+}
+
+errorWithHint() {
+    printf "$(basename "$0"): error: %s\n" "$1"
+    shift
+    for hint in "$@"; do
+        printf "$(basename "$0"): hint: %s\n" "$hint"
+    done
+}
+
+# Parse options.
+while [[ "$1" =~ ^- && ! "$1" == "--" ]]; do
+    case $1 in
+        -h | --help )
+            echo "$usage"
+            exit
+            ;;
+        *)
+            errorf 'invalid option: %s' "$1"
+            echo "$usage"
+            exit 1
+    esac
+    shift
+done
+
+# Skip '--' if given.
+if [[ "$1" == '--' ]]; then
+    shift
+fi
+
+# Check if a PID is given. (It is mandatory.)
+if [[ -z $1 ]]; then
+    read -r _PID
+else
+    _PID="$1"
+fi
+if [[ -z $_PID ]]; then
+    errorf 'invalid empty PID'
+    echo "$usage"
+    exit 1
+fi
+
+# Check if the PID is actually valid.
+processExists "$_PID"
+
+# Execute the main function.
+printf "$(basename "$0"): pid choosen: %s\n" "$_PID"
+printVmrss "$_PID"
+
+exit 0

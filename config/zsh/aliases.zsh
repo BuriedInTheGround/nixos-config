@@ -52,3 +52,6 @@ fi
 if command -v procs > /dev/null; then
   alias ps='procs'
 fi
+
+# Custom scripts.
+alias vmrss="$MY_NIXOS_BIN/vmrss"
