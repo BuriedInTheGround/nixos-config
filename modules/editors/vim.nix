@@ -101,6 +101,9 @@ in {
             telescope-nvim
             telescope-fzf-native-nvim
 
+            # --- Code Commenting ---
+            comment-nvim
+
             # --- Various Tools ---
             markdown-preview-nvim
 
