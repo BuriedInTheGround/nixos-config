@@ -14,11 +14,14 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       (mkIf (!cfg.useModern) tree)
-      (mkIf cfg.useModern tre-command)
     ];
 
+    modules.shell.exa = mkIf cfg.useModern {
+      enable = mkForce true;
+    };
+
     environment.shellAliases = mkIf cfg.useModern {
-      tree = "tre";
+      tree = "exa --tree";
     };
   };
 }
