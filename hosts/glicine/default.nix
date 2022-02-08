@@ -107,6 +107,7 @@ with lib.my;
     shell.duf.enable = true;
     shell.dust.enable = true;
     shell.exa.enable = true;
+    shell.exiftool.enable = true;
     shell.fd.enable = true;
     shell.ffmpeg.enable = true;
     shell.fzf.enable = true;
