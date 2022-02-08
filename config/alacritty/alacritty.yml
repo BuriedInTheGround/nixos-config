@@ -2,7 +2,7 @@ env:
   TERM: xterm-256color
 window:
   dynamic_padding: true
-  # TODO: Enable from version 0.10.0 -> opacity: 0.92
+  opacity: 0.92
   startup_mode: Maximized
   title: Alacritty
   dynamic_title: true
@@ -76,8 +76,7 @@ colors:
     end:
       foreground: '#d8dee9'
       background: '#434c5e'
-  # TODO: Enable from version 0.10.0 -> transparent_background_colors: true
-background_opacity: 0.92
+  transparent_background_colors: true
 live_config_reload: true
 shell:
   program: /usr/bin/env
