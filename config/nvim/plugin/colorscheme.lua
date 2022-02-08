@@ -22,6 +22,7 @@ vim.g.nord_italic = 1
 vim.g.nord_italic_comments = 1
 vim.env.BAT_THEME = "Nord"
 vim.cmd [[ colorscheme nord ]]
+vim.cmd [[ hi Normal guibg=NONE ]]  -- True transparent background.
 link_cmp_colors()
 
 local color_monokai = function()
@@ -39,5 +40,6 @@ local color_nord = function()
   vim.g.nord_italic_comments = 1
   vim.env.BAT_THEME = "Nord"
   vim.cmd [[ colorscheme nord ]]
+  vim.cmd [[ hi Normal guibg=NONE ]]  -- True transparent background.
   link_cmp_colors()
 end
