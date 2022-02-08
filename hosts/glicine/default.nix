@@ -11,6 +11,7 @@ with lib.my;
 
   modules = {
     desktop = {
+      apps.anki.enable = true;
       apps.discord.enable = true;
       apps.flameshot.enable = true;
       apps.gimp.enable = true;
