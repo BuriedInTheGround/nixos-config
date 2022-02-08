@@ -18,12 +18,18 @@ require("telescope").setup {
       "--smart-case",
       "--hidden",
       "--glob", "!.git",
+      "--glob", "!.bare",
       "--trim"
     },
   },
   pickers = {
     find_files = {
-      find_command = { "fd", "--strip-cwd-prefix", "--hidden", "--exclude", ".git", "--type", "file" }
+      find_command = {
+        "fd", "--strip-cwd-prefix", "--hidden",
+        "--exclude", ".git",
+        "--exclude", ".bare",
+        "--type", "file",
+      }
     },
   }
 }
