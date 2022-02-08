@@ -24,7 +24,7 @@ with lib.my;
   '';
 
   # Set Nix store auto-optimization.
-  nix.autoOptimiseStore = true;
+  nix.settings.auto-optimise-store = true;
 
   # Use the latest kernel.
   boot.kernelPackages = mkDefault pkgs.linuxPackages_latest;
