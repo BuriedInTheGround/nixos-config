@@ -6,7 +6,7 @@ local luasnip = require "luasnip"
 
 -- Load lspkind
 local lspkind = require "lspkind"
-lspkind.init()
+lspkind.init({ with_text = nil })
 
 -- Load nvim-cmp
 local cmp = require "cmp"
