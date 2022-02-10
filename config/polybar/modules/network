@@ -9,10 +9,10 @@ ping-interval = 5
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 
-label-connected = %{A1:alacritty -o window.padding.x=40 window.padding.y=40 -e nmtui:}%{A}
+label-connected = %{A1:alacritty -o window.padding.x=40 window.padding.y=40 -e nmtui-connect:}%{A}
 label-connected-foreground = ${colors.nord14}
 
-label-disconnected = %{A1:alacritty -o window.padding.x=40 window.padding.y=40 -e nmtui:}%{A}
+label-disconnected = %{A1:alacritty -o window.padding.x=40 window.padding.y=40 -e nmtui-connect:}%{A}
 label-disconnected-foreground = ${colors.nord11}
 
 ; vim:ft=dosini
