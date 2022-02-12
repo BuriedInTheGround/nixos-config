@@ -49,7 +49,7 @@ with lib.my;
 
     # Set https://github.com/uutils/coreutils as a replacement of the original
     # GNU coreutils.
-    (unstable.uutils-coreutils.override { prefix = ""; })
+    (uutils-coreutils.override { prefix = ""; })
   ];
 
   # Set the configurationRevision to the Git revision of this repository.

@@ -29,7 +29,7 @@ with lib.my;
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
-        (unstable.iosevka.override {
+        (iosevka.override {
           privateBuildPlan = ''
             [buildPlans.iosevka-term]
             family = "Iosevka Term"

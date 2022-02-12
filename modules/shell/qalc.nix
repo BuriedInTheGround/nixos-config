@@ -11,6 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.unstable.libqalculate ];
+    user.packages = [ pkgs.libqalculate ];
   };
 }

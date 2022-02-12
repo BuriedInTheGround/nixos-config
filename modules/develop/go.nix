@@ -11,7 +11,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.unstable.go_1_17 ]; # TODO: update when possible.
+    user.packages = [ pkgs.go_1_17 ]; # TODO: update when possible.
 
     # Ensure that Go installed local binaries are accessible through PATH.
     env.GOPATH = "$(go env GOPATH)";

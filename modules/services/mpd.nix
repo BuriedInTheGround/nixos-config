@@ -27,7 +27,7 @@ in {
       # Add MPRIS service for MPD.
       # Note: you have to start it manually.
       # TODO: fix to start automatically (?)
-      unstable.mpd-mpris
+      mpd-mpris
     ];
 
     home.configFile."mpd/mpd.conf".text = ''

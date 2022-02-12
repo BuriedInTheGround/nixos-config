@@ -14,7 +14,7 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
-      user.packages = [ pkgs.unstable.alacritty ];
+      user.packages = [ pkgs.alacritty ];
 
       home.configFile."alacritty/alacritty.yml".source =
         "${configDir}/alacritty/alacritty.yml";

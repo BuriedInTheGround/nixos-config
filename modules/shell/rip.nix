@@ -11,7 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # TODO: switch to stable when available.
-    user.packages = [ pkgs.unstable.rm-improved ];
+    user.packages = [ pkgs.rm-improved ];
   };
 }

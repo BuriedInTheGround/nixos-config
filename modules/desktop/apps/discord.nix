@@ -11,7 +11,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # Must use `unstable` to (try to) avoid Discord wanting to update.
-    user.packages = [ pkgs.unstable.discord ];
+    # Make sure to be using an unstable channel to (try to) avoid Discord
+    # wanting to update.
+    user.packages = [ pkgs.discord ];
   };
 }

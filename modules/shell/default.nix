@@ -11,7 +11,7 @@ in {
     user.packages = with pkgs; [
       bc
       jq
-      unstable.mmv-go # `multi-mv`
+      mmv-go  # `multi-mv`
       xclip
     ];
 

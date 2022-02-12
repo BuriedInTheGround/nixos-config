@@ -13,13 +13,13 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-      unstable.pkgs.rofi
+      rofi
 
       (writeScriptBin "myrofi" ''
         #!${stdenv.shell}
-        exec ${unstable.pkgs.rofi}/bin/rofi -monitor -1 \
-                                            -matching fuzzy \
-                                            -no-fixed-num-lines "$@"
+        exec ${rofi}/bin/rofi -monitor -1 \
+                              -matching fuzzy \
+                              -no-fixed-num-lines "$@"
       '')
     ];
 

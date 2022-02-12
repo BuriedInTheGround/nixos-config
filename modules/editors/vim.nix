@@ -34,7 +34,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = with pkgs.unstable; [
+    user.packages = with pkgs; [
       (mkIf (elem "bash" cfg.supportLSP)        nodePackages.bash-language-server)
       (mkIf (elem "go" cfg.supportLSP)          gopls)
       (mkIf (elem "latex" cfg.supportLSP)       texlab)
@@ -48,7 +48,7 @@ in {
 
     programs.neovim = {
       enable = true;
-      package = pkgs.unstable.neovim-unwrapped;
+      package = pkgs.neovim-unwrapped;
       vimAlias = true;
       configure = let
         nvimConfigDir = "${config.user.home}/.config/nvim";
@@ -66,7 +66,7 @@ in {
           ${if (elem "typescript" cfg.supportLSP)  then "luafile ${lspServersDir}/typescript.lua"  else ""}
           ${if (elem "vim" cfg.supportLSP)         then "luafile ${lspServersDir}/vim.lua"         else ""}
         '';
-        packages.myPlugins = with pkgs.unstable.vimPlugins; {
+        packages.myPlugins = with pkgs.vimPlugins; {
           start = [
             # --- Tree-sitter ---
             (nvim-treesitter.withPlugins (

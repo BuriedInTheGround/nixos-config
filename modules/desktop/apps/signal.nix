@@ -11,8 +11,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # Must use `unstable` because after a certain amount of time Signal
-    # complains that the version is too low a stops working.
-    user.packages = [ pkgs.unstable.signal-desktop ];
+    # Make sure to be using an unstable channel because after a certain amount
+    # of time Signal complains that the version is too low a stops working.
+    user.packages = [ pkgs.signal-desktop ];
   };
 }

@@ -11,7 +11,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -19,7 +18,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, ... } @ inputs:
+  outputs = { self, nixpkgs, ... } @ inputs:
     let
       inherit (lib.my) mapModulesRec mapHosts;
 
@@ -31,8 +30,7 @@
         config.allowUnfree = true;
         overlays = extraOverlays;
       };
-      pkgs = mkPkgs nixpkgs [ self.overlay ]; # (3) Set the overlay with unstable.
-      pkgs' = mkPkgs nixpkgs-unstable []; # (1) Make the unstable.
+      pkgs = mkPkgs nixpkgs [ self.overlay ];
 
       # Extend the standard nixpkgs/lib with my lib located at `./lib`.
       lib = nixpkgs.lib.extend (self: super: {
@@ -42,9 +40,7 @@
         };
       });
     in {
-      overlay = final: prev: {
-        unstable = pkgs'; # (2) Create the overlay with unstable.
-      };
+      overlay = final: prev: { };
 
       # Uncomment the following line to expose the modules of this repository.
       # nixosModules = mapModulesRec import ./modules;
