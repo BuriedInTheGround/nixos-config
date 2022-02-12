@@ -20,22 +20,22 @@ in {
         {
           nixpkgs.pkgs = pkgs; # Point pkgs to the pkgs input received.
 
-	  # Set the hostname based on the directory name, if it contains a
-	  # default.nix, or the file name (a non default.nix file containing a
-	  # configuration).
+          # Set the hostname based on the directory name, if it contains a
+          # default.nix, or the file name (a non default.nix file containing a
+          # configuration).
           networking.hostName = mkDefault (removeSuffix ".nix" (baseNameOf path));
         }
 
-	# Insert every other attribute except "system" (which is already
-	# inherited outside).
+        # Insert every other attribute except "system" (which is already
+        # inherited outside).
         (filterAttrs (n: v: !elem n [ "system" ]) attrs)
 
-	# Insert from default.nix in the root directory of this repository,
-	# there should be a basic configuration in it.
+        # Insert from default.nix in the root directory of this repository,
+        # there should be a basic configuration in it.
         ../.
 
-	# Insert the actual configuration (from `<hostname-dir>/default.nix` or
-	# from `<hostname-file>.nix`).
+        # Insert the actual configuration (from `<hostname-dir>/default.nix` or
+        # from `<hostname-file>.nix`).
         (import path)
       ];
       specialArgs = { inherit inputs lib system; };
