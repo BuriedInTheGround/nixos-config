@@ -3,9 +3,11 @@ vim.opt.autowrite = true
 vim.opt.updatetime = 100 -- Faster updates, better UX
 vim.opt.hidden = true -- Don't unload buffers when abandoned
 vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 vim.opt.inccommand = "nosplit"
 vim.opt.omnifunc = "syntaxcomplete#Complete"
 vim.opt.mouse = "nv" -- Enable mouse support only for Normal and Visual modes
+vim.opt.clipboard = "unnamedplus"
 
 -- Dynamically toggle smartcase
 --  ➤ Off when in a : command line
@@ -35,7 +37,7 @@ vim.opt.breakindent = true -- Wrapped lines will be visually indented
 vim.opt.showbreak = "…" .. string.rep(" ", 3)
 vim.opt.linebreak = true -- Wrap lines on word boundaries (see :h breakat)
 
--- Splits {{{
+-- Splits
 vim.opt.splitright = true -- Splitting puts the new window on the right
 
 -- Neovim Terminal

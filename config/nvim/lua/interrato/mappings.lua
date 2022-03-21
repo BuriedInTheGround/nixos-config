@@ -15,8 +15,8 @@ local function tnoremap(lhs, rhs)
 end
 
 -- Change colorscheme
---nnoremap("<Leader>c1", "<Cmd>lua color_set_monokai()<CR>")
---nnoremap("<Leader>c2", "<Cmd>lua color_set_nord()<CR>")
+nnoremap("<Leader>c1", "<Cmd>lua require('interrato.colors').monokai()<CR>")
+nnoremap("<Leader>c2", "<Cmd>lua require('interrato.colors').nord()<CR>")
 
 -- Clear search result highlighting
 nnoremap(",<Space>", "<Cmd>nohlsearch<CR>")

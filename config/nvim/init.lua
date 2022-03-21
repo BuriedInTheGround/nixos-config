@@ -17,6 +17,9 @@ vim.api.nvim_set_keymap("n", "<Space>", "<Nop>", {
 })
 vim.g.mapleader = " "
 
+-- Things that I want to be always available
+require "interrato.globals"
+
 -- Vim/Neovim options
 require "interrato.settings"
 
