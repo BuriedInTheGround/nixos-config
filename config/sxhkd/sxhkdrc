@@ -74,6 +74,10 @@ super + x
 super + n
         polybar-msg hook mpd-ipc 1
 
+# re-launch polybar
+super + alt + p
+        $XDG_CONFIG_HOME/polybar/launch.sh
+
 #
 # bspwm hotkeys
 #
