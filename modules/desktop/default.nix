@@ -26,19 +26,10 @@ with lib.my;
         dejavu_fonts
         font-awesome
         ibm-plex
+        iosevka-bin
         noto-fonts
         noto-fonts-cjk
         noto-fonts-emoji
-        (iosevka.override {
-          privateBuildPlan = ''
-            [buildPlans.iosevka-term]
-            family = "Iosevka Term"
-            spacing = "term"
-            serifs = "sans"
-            no-cv-ss = true
-          '';
-          set = "term";
-        })
         (nerdfonts.override {
           fonts = [ "DejaVuSansMono" "IBMPlexMono" ];
         })
