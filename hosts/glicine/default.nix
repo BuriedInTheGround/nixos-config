@@ -136,7 +136,10 @@ with lib.my;
   };
 
   # Enables NetworkManager.
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.macAddress = "random";
+  };
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
