@@ -20,6 +20,7 @@ with lib.my;
       apps.rofi.enable = true;
       apps.telegram.enable = true;
       apps.wine.enable = true;
+      browsers.chromium.enable = true;
       browsers.firefox.enable = true;
       bspwm.enable = true;
       media.droidcam.enable = true;
