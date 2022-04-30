@@ -1,6 +1,6 @@
 [user]
 	name = Simone Ragusa
-	email = simone99.as@gmail.com
+	email = hi@interrato.dev
 [core]
 	pager = diff-so-fancy | less --tabs=2 -RFX --mouse --wheel-lines 3
 	whitespace = trailing-space,space-before-tab
