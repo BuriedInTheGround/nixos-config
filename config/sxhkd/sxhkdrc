@@ -72,7 +72,7 @@ super + x
 
 # toggle `bottom-mpd` bar
 super + n
-        polybar-msg action '#mpd-ipc.hook.0'
+        $XDG_CONFIG_HOME/polybar/scripts/toggle.sh
 
 # re-launch polybar
 super + alt + p

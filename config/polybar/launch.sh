@@ -43,9 +43,12 @@ else
     echo "Error: cannot determine system type." | tee -a /tmp/polybar-generic.log
 fi
 
-# Reset `bottom-mpd` bar visibility, then wait, then hide it.
+# Reset `bottom-mpd` bar visibility, then wait, then save the bar PID, than
+# wait more and finally hide the bar.
 echo 'visible' > /tmp/bottom-mpd-status.log
-sleep 3
+sleep 2
 polybar-msg action "#mpd-ipc.hook.0" & disown
+sleep 1
+~/.config/polybar/scripts/toggle.sh & disown
 
 echo "Bars launched..."
