@@ -22,7 +22,7 @@ alias rr='rm -r'     # Remove recursively.
 # For working with my NixOS configuration.
 alias cdot="cd $MY_NIXOS_CONFIG"
 alias edot="pushd $MY_NIXOS_CONFIG && $EDITOR . && popd"
-alias nixdot="nixos-rebuild switch --flake $MY_NIXOS_CONFIG# --impure"
+alias nixdot="nixos-rebuild switch --use-remote-sudo --flake $MY_NIXOS_CONFIG# --impure"
 
 # Clipboard Mac-like.
 if command -v xclip > /dev/null; then
