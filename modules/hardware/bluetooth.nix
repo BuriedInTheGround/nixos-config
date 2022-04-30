@@ -34,7 +34,6 @@ in {
       # Enable PulseAudio bluetooth support for AAC, APTX, APTX-HD and LDAC.
       hardware.pulseaudio = {
         package = mkForce pkgs.pulseaudioFull;
-        extraModules = [ pkgs.pulseaudio-modules-bt ];
       };
 
       # Enable the bluetooth A2DP profile to properly handle modern headsets.
