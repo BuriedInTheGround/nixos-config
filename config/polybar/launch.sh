@@ -46,6 +46,6 @@ fi
 # Reset `bottom-mpd` bar visibility, then wait, then hide it.
 echo 'visible' > /tmp/bottom-mpd-status.log
 sleep 3
-polybar-msg hook mpd-ipc 1 & disown
+polybar-msg action "#mpd-ipc.hook.0" & disown
 
 echo "Bars launched..."

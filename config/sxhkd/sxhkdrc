@@ -72,7 +72,7 @@ super + x
 
 # toggle `bottom-mpd` bar
 super + n
-        polybar-msg hook mpd-ipc 1
+        polybar-msg action '#mpd-ipc.hook.0'
 
 # re-launch polybar
 super + alt + p
