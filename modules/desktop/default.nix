@@ -28,7 +28,7 @@ with lib.my;
         ibm-plex
         iosevka-bin
         noto-fonts
-        noto-fonts-cjk
+        noto-fonts-cjk-sans
         noto-fonts-emoji
         (nerdfonts.override {
           fonts = [ "DejaVuSansMono" "IBMPlexMono" ];
