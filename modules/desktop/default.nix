@@ -24,7 +24,7 @@ with lib.my;
       # Add fonts.
       fonts = with pkgs; [
         dejavu_fonts
-        font-awesome
+        font-awesome_5
         ibm-plex
         iosevka-bin
         noto-fonts
