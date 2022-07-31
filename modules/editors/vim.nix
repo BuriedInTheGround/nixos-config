@@ -55,6 +55,7 @@ in {
         lspServersDir = "${nvimConfigDir}/lua/interrato/lsp/servers";
       in {
         customRC = ''
+          set runtimepath^=${nvimConfigDir}
           luafile ${nvimConfigDir}/init.lua
           ${if (elem "bash" cfg.supportLSP)        then "luafile ${lspServersDir}/bash.lua"        else ""}
           ${if (elem "go" cfg.supportLSP)          then "luafile ${lspServersDir}/go.lua"          else ""}
