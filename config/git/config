@@ -8,6 +8,8 @@
 	defaultBranch = main
 [interactive]
 	diffFilter = diff-so-fancy --patch
+[add "interactive"]
+	useBuiltin = false
 [github]
 	user = BuriedInTheGround
 [alias]
