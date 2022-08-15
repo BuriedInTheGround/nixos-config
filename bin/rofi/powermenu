@@ -8,7 +8,7 @@ MENU="$(myrofi -no-lazy-grab -sep "|" -dmenu -i \
 -selected-row 2 \
 <<< "  Shutdown|  Reboot|  Lock|  Suspend|  Logout")"
 case "$MENU" in
-  *Shutdown) systemctl -i poweroff;;
+  *Shutdown) systemctl poweroff;;
   *Reboot) systemctl reboot;;
   *Lock)
       if command -v xsecurelock > /dev/null; then
@@ -31,9 +31,9 @@ case "$MENU" in
           XSECURELOCK_PASSWORD_PROMPT=time \
           XSECURELOCK_SHOW_HOSTNAME=0 \
           XSECURELOCK_SHOW_USERNAME=0 \
-          xsecurelock -- systemctl suspend
+          xsecurelock -- bash -c "bluetoothctl disconnect; systemctl suspend; sleep 1; bluetoothctl power off; sleep 1; bluetoothctl power on"
       else
-          systemctl suspend
+          bluetoothctl disconnect; systemctl suspend; sleep 1; bluetoothctl power off; sleep 1; bluetoothctl power on
       fi
       ;;
   *Logout)
