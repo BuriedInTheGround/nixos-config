@@ -30,6 +30,7 @@ with lib.my;
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-emoji
+        twitter-color-emoji
         (nerdfonts.override {
           fonts = [ "DejaVuSansMono" "IBMPlexMono" ];
         })
@@ -43,6 +44,7 @@ with lib.my;
           emoji = [ "Noto Color Emoji" ];
           monospace = [
             "Iosevka Term Extended"
+            "Twitter Color Emoji"
             "Noto Color Emoji"
             "DejaVuSansMono Nerd Font"
             "DejaVu Sans Mono"
