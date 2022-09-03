@@ -4,7 +4,12 @@
 if [[ $# -eq 1 ]]; then
     startdir=$1
 else
-    startdir=$(fd . ~/ ~/Projects ~/Documents --max-depth 1 --type d | fzf)
+    folders="$HOME/ $HOME/Projects $HOME/Documents"
+    if command -v fd > /dev/null; then
+        startdir=$(fd --exact-depth 1 --type d . $folders | sed 's/\/$//' | fzf)
+    else
+        startdir=$(find $folders -mindepth 1 -maxdepth 1 -type d -not -name '.*' | fzf)
+    fi
 fi
 
 # If not folder is selected, exit gracefully.
