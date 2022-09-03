@@ -36,6 +36,7 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       (mkIf (elem "bash" cfg.supportLSP)        nodePackages.bash-language-server)
+      (mkIf (elem "css" cfg.supportLSP)         nodePackages.vscode-langservers-extracted)
       (mkIf (elem "go" cfg.supportLSP)          gopls)
       (mkIf (elem "latex" cfg.supportLSP)       texlab)
       (mkIf (elem "nix" cfg.supportLSP)         rnix-lsp)
@@ -57,6 +58,7 @@ in {
         customRC = ''
           luafile ${nvimConfigDir}/init.lua
           ${if (elem "bash" cfg.supportLSP)        then "luafile ${lspServersDir}/bash.lua"        else ""}
+          ${if (elem "css" cfg.supportLSP)         then "luafile ${lspServersDir}/css.lua"         else ""}
           ${if (elem "go" cfg.supportLSP)          then "luafile ${lspServersDir}/go.lua"          else ""}
           ${if (elem "latex" cfg.supportLSP)       then "luafile ${lspServersDir}/latex.lua"       else ""}
           ${if (elem "nix" cfg.supportLSP)         then "luafile ${lspServersDir}/nix.lua"         else ""}

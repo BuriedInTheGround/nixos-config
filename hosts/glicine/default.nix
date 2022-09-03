@@ -55,11 +55,11 @@ with lib.my;
       enable = true;
       supportLSP = [
         "bash"
+        "css"
         "go"
         "latex"
         "nix"
         "svelte"
-        "tailwindcss"
         "typescript"
         "vim"
       ];
