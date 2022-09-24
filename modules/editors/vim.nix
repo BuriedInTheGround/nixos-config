@@ -15,6 +15,7 @@ in {
 
       Supported languages:
       - bash
+      - css
       - go
       - latex
       - nix
@@ -23,6 +24,7 @@ in {
       - tailwindcss
       - typescript
       - vim
+      - yaml
       '' (types.listOf types.str);
 
     supportTreesitter = mkOpt' [] ''
@@ -45,6 +47,7 @@ in {
       (mkIf (elem "tailwindcss" cfg.supportLSP) nodePackages."@tailwindcss/language-server")
       (mkIf (elem "typescript" cfg.supportLSP)  nodePackages.typescript-language-server)
       (mkIf (elem "vim" cfg.supportLSP)         nodePackages.vim-language-server)
+      (mkIf (elem "yaml" cfg.supportLSP)        nodePackages.yaml-language-server)
     ];
 
     programs.neovim = {
@@ -67,6 +70,7 @@ in {
           ${if (elem "tailwindcss" cfg.supportLSP) then "luafile ${lspServersDir}/tailwindcss.lua" else ""}
           ${if (elem "typescript" cfg.supportLSP)  then "luafile ${lspServersDir}/typescript.lua"  else ""}
           ${if (elem "vim" cfg.supportLSP)         then "luafile ${lspServersDir}/vim.lua"         else ""}
+          ${if (elem "yaml" cfg.supportLSP)        then "luafile ${lspServersDir}/yaml.lua"        else ""}
         '';
         packages.myPlugins = with pkgs.vimPlugins; {
           start = [

@@ -62,6 +62,7 @@ with lib.my;
         "svelte"
         "typescript"
         "vim"
+        "yaml"
       ];
       supportTreesitter = [
         "bash"
