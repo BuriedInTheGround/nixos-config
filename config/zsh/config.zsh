@@ -30,9 +30,9 @@ setopt PUSHD_TO_HOME     # Have `pushd` with no args act like `pushd $HOME`.
 # History {{{
 HISTFILE="$XDG_CACHE_HOME/zsh_history" # Set the location of the history file.
 
-HISTSIZE=4500 # 3x times the value of SAVEHIST to assure proper working of
-              # HIST_EXPIRE_DUPS_FIRST.
-SAVEHIST=1500
+HISTSIZE=15000 # 3x times the value of SAVEHIST to assure proper working of
+               # HIST_EXPIRE_DUPS_FIRST.
+SAVEHIST=5000
 # }}}
 
 # Options > History {{{
