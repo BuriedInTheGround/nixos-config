@@ -18,7 +18,7 @@ in {
       (mkIf mpvCfg.enable (xsecurelock.overrideAttrs (oldAttrs: rec {
         configureFlags = [
           "--with-pam-service-name=login"
-          "--with-mpv=${pkgs.mpv-with-scripts}/bin/mpv"
+          "--with-mpv=${pkgs.mpv}/bin/mpv"
         ];
       })))
 

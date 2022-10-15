@@ -11,6 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.mpv-with-scripts ];
+    user.packages = [ pkgs.mpv ];
   };
 }
