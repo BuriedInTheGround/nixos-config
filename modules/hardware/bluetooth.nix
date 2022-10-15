@@ -16,7 +16,7 @@ in {
       hardware.bluetooth = {
         # Enable bluetooth.
         enable = true;
-        package = pkgs.bluezFull;
+        package = pkgs.bluez;
         powerOnBoot = true;
 
         # Enable faster discoverability.
