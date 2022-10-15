@@ -18,7 +18,7 @@ with lib.my;
   environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
 
   # Enable Nix Flakes.
-  nix.package = pkgs.nixFlakes;
+  nix.package = pkgs.nixStable;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
