@@ -52,7 +52,7 @@ local custom_attach = function(client)
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
   -- Refresh Code Lens
-  if client.resolved_capabilities.code_lens then
+  if client.server_capabilities.code_lens then
     vim.cmd [[
       augroup LSPDocumentCodeLens
         autocmd! * <buffer>
