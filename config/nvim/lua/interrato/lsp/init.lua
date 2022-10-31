@@ -67,7 +67,7 @@ end
 
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
 updated_capabilities.textDocument.codeLens = { dynamic_registration = false }
-updated_capabilities = require("cmp_nvim_lsp").update_capabilities(updated_capabilities)
+updated_capabilities = require("cmp_nvim_lsp").default_capabilities(updated_capabilities)
 
 return {
   on_attach = custom_attach,
