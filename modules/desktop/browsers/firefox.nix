@@ -11,7 +11,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.firefox ];
+    user.packages = [ pkgs.firefox-bin ];
 
     # Comply with the XDG standard.
     # See https://bugzilla.mozilla.org/show_bug.cgi?id=1082717.
