@@ -59,6 +59,7 @@ if [ ! -f $startup_lock_file ]; then
     touch $startup_lock_file
     firefox &
     alacritty &
+    logseq &
 fi
 
 # }}}
