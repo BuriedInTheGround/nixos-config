@@ -89,6 +89,7 @@ with lib.my;
     };
     hardware.filesystems.enable = true;
     hardware.sensors.enable = true;
+    hardware.virt.enable = true;
 
     services.devmon.enable = true;
     services.dunst.enable = true;
