@@ -32,6 +32,8 @@ in {
       backend = mkForce "glx";
       settings = {
         glx-no-stencil = true;
+        no-use-damage = true;
+        xrender-sync-fence = true;
       };
     };
   };
