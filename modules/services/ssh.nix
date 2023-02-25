@@ -13,9 +13,11 @@ in {
   config = mkIf cfg.enable {
     services.openssh = {
       enable = true;
-      kbdInteractiveAuthentication = false;
-      passwordAuthentication = false;
       startWhenNeeded = true;
+      settings = {
+        KbdInteractiveAuthentication = false;
+        PasswordAuthentication = false;
+      };
     };
 
     programs.ssh.extraConfig = ''
