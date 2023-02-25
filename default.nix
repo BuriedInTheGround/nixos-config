@@ -27,7 +27,7 @@ with lib.my;
   nix.settings.auto-optimise-store = true;
 
   # Specify the kernel version to use.
-  boot.kernelPackages = mkDefault pkgs.linuxKernel.packages.linux_6_0;
+  boot.kernelPackages = mkDefault pkgs.linuxPackages;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = mkDefault true;
