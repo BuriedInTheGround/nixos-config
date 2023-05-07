@@ -4,11 +4,11 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Set the wallpaper.
-feh --bg-fill $MY_NIXOS_WALLS/mountain.jpg &
+feh --bg-fill "$MY_NIXOS_WALLS/mountain.jpg" &
 
-MONITORS=( $(xrandr -q | grep ' connected' | cut -d ' ' -f 1) )
+mapfile -t MONITORS < <(xrandr -q | grep ' connected' | cut -d ' ' -f 1)
 
-if [[ ${#MONITORS[@]} -eq 2 ]]; then
+if [[ "${#MONITORS[@]}" -eq 2 ]]; then
     xrandr --output DisplayPort-0 --auto --primary \
            --output HDMI-0 --auto --left-of DisplayPort-0
     bspc monitor DisplayPort-0 -d {1,2,3,4,5}
@@ -39,7 +39,7 @@ bspc config split_ratio               0.52
 
 # BSPWM Rules + Programs startup {{{
 
-# Rules
+# Rules.
 bspc rule -r "*"
 bspc rule -a Navigator       desktop=1 follow=on
 bspc rule -a firefox         desktop=1 follow=on
@@ -53,10 +53,10 @@ bspc rule -a Pavucontrol     desktop=7 follow=on
 bspc rule -a Droidcam        desktop=7 follow=off
 bspc rule -a Zathura         desktop=9 follow=on
 
-# Autostart programs
-startup_lock_file=/tmp/bspwm-startup.lock
-if [ ! -f $startup_lock_file ]; then
-    touch $startup_lock_file
+# Autostart programs.
+startup_lock_file="/tmp/bspwm-startup.lock"
+if [[ ! -f "$startup_lock_file" ]]; then
+    touch "$startup_lock_file"
     firefox &
     alacritty &
     logseq &
@@ -69,8 +69,8 @@ setxkbmap
 
 # Start polybar if correctly installed.
 if command -v polybar > /dev/null; then
-    if [[ -x $XDG_CONFIG_HOME/polybar/launch.sh ]]; then
-        $XDG_CONFIG_HOME/polybar/launch.sh
+    if [[ -x "$XDG_CONFIG_HOME/polybar/launch.sh" ]]; then
+        "$XDG_CONFIG_HOME/polybar/launch.sh"
     fi
 fi
 
