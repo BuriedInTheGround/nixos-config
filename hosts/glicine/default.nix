@@ -58,6 +58,7 @@ with lib.my;
         "css"
         "go"
         "latex"
+        "lua"
         "nix"
         "svelte"
         "typescript"

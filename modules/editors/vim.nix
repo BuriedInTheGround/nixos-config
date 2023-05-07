@@ -18,6 +18,7 @@ in {
       - css
       - go
       - latex
+      - lua
       - nix
       - python
       - svelte
@@ -41,6 +42,7 @@ in {
       (mkIf (elem "css" cfg.supportLSP)         nodePackages.vscode-langservers-extracted)
       (mkIf (elem "go" cfg.supportLSP)          gopls)
       (mkIf (elem "latex" cfg.supportLSP)       texlab)
+      (mkIf (elem "lua" cfg.supportLSP)         lua-language-server)
       (mkIf (elem "nix" cfg.supportLSP)         rnix-lsp)
       (mkIf (elem "python" cfg.supportLSP)      pyright)
       (mkIf (elem "svelte" cfg.supportLSP)      nodePackages.svelte-language-server)
@@ -64,6 +66,7 @@ in {
           ${if (elem "css" cfg.supportLSP)         then "luafile ${lspServersDir}/css.lua"         else ""}
           ${if (elem "go" cfg.supportLSP)          then "luafile ${lspServersDir}/go.lua"          else ""}
           ${if (elem "latex" cfg.supportLSP)       then "luafile ${lspServersDir}/latex.lua"       else ""}
+          ${if (elem "lua" cfg.supportLSP)         then "luafile ${lspServersDir}/lua.lua"         else ""}
           ${if (elem "nix" cfg.supportLSP)         then "luafile ${lspServersDir}/nix.lua"         else ""}
           ${if (elem "python" cfg.supportLSP)      then "luafile ${lspServersDir}/python.lua"      else ""}
           ${if (elem "svelte" cfg.supportLSP)      then "luafile ${lspServersDir}/svelte.lua"      else ""}
