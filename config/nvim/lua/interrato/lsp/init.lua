@@ -13,7 +13,7 @@ local filetype_attach = setmetatable({
     vim.cmd [[
       augroup LSPBufFormat
         autocmd! BufWritePre <buffer>
-        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+        autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
       augroup END
     ]]
   end,
