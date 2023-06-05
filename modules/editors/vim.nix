@@ -75,7 +75,18 @@ in {
           ${if (elem "vim" cfg.supportLSP)         then "luafile ${lspServersDir}/vim.lua"         else ""}
           ${if (elem "yaml" cfg.supportLSP)        then "luafile ${lspServersDir}/yaml.lua"        else ""}
         '';
-        packages.myPlugins = with pkgs.vimPlugins; {
+        packages.myPlugins = with pkgs.vimPlugins; let
+          lush-nvim-fixed = pkgs.neovimUtils.buildNeovimPluginFrom2Nix {
+            pname = "lush.nvim";
+            version = "2023-05-01";
+            src = pkgs.fetchFromGitHub {
+              owner = "BuriedInTheGround";
+              repo = "lush.nvim";
+              rev = "fe035690c2e98cfba697701fc7026d6a839ceac1";
+              sha256 = "117frxw7gwac21y3xbkc1ykwb5d4cj0fsax78m7bl668b6dvxah7";
+            };
+          };
+        in {
           start = [
             # --- Tree-sitter ---
             (nvim-treesitter.withPlugins (
@@ -103,6 +114,7 @@ in {
             vim-monokai
             vim-airline
             vim-airline-themes
+            lush-nvim-fixed # Colorscheme creation aid for Neovim.
 
             # --- Telescope ---
             nvim-web-devicons
