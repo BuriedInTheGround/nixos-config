@@ -8,9 +8,11 @@ let
   configDir = config.my.configDir;
 
   tmuxConf = ''
-    # Enable 24-bit TrueColor and italics.
+    # Enable 24-bit TrueColor, italics, undercurl, and underline colors.
     set-option -g  default-terminal   "tmux-256color"
     set-option -ag terminal-overrides ",xterm-256color:RGB"
+    set-option -ag terminal-overrides ',*:Smulx=\E[4::%p1%dm'
+    set-option -ag terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
 
     # Style the status bar.
     #set-option -g status-style 'bg=#2e3440 fg=#81a1c1'
