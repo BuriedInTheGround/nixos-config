@@ -24,5 +24,6 @@ with lib;
     xkbOptions =
       mkDefault "terminate:ctrl_alt_bksp,eurosign:e,grp:alt_space_toggle";
     xkbVariant = mkDefault "us";
+    exportConfiguration = mkDefault true;
   };
 }
