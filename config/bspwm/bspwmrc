@@ -41,17 +41,19 @@ bspc config split_ratio               0.52
 
 # Rules.
 bspc rule -r "*"
-bspc rule -a Navigator       desktop=1 follow=on
-bspc rule -a firefox         desktop=1 follow=on
-bspc rule -a Alacritty       desktop=2 follow=on
-bspc rule -a Logseq          desktop=3 follow=on
-bspc rule -a TelegramDesktop desktop=4 follow=on
-bspc rule -a Gimp            desktop=5 follow=on
-bspc rule -a Gimp-2.10       desktop=5 follow=on
-bspc rule -a obs             desktop=6 follow=on
-bspc rule -a Pavucontrol     desktop=7 follow=on
-bspc rule -a Droidcam        desktop=7 follow=off
-bspc rule -a Zathura         desktop=9 follow=on
+bspc rule -a Navigator             desktop=1 follow=on
+bspc rule -a firefox               desktop=1 follow=on
+bspc rule -a Alacritty             desktop=2 follow=on
+bspc rule -a Logseq                desktop=3 follow=on
+bspc rule -a TelegramDesktop       desktop=4 follow=on
+bspc rule -a Gimp                  desktop=5 follow=on
+bspc rule -a Gimp-2.10             desktop=5 follow=on
+bspc rule -a Inkscape              desktop=5 follow=on
+bspc rule -a org.inkscape.Inkscape desktop=5 follow=on
+bspc rule -a obs                   desktop=6 follow=on
+bspc rule -a Pavucontrol           desktop=7 follow=on
+bspc rule -a Droidcam              desktop=7 follow=off
+bspc rule -a Zathura               desktop=9 follow=on
 
 # Autostart programs.
 startup_lock_file="/tmp/bspwm-startup.lock"

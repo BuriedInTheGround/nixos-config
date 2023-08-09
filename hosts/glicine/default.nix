@@ -15,6 +15,7 @@ with lib.my;
       apps.discord.enable = true;
       apps.flameshot.enable = true;
       apps.gimp.enable = true;
+      apps.inkscape.enable = true;
       apps.logseq.enable = true;
       apps.pavuc.enable = true;
       apps.rofi.enable = true;
