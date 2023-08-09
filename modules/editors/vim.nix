@@ -109,12 +109,14 @@ in {
             cmp-emoji # nvim-cmp source for emojis.
             lspkind-nvim # VSCode-like pictograms for LSP.
 
-            # --- Theme and airline ---
+            # --- Themes ---
             nord-vim
             vim-monokai
-            vim-airline
-            vim-airline-themes
             lush-nvim-fixed # Colorscheme creation aid for Neovim.
+
+            # --- Lualine ---
+            lualine-nvim
+            lualine-lsp-progress
 
             # --- Telescope ---
             nvim-web-devicons
