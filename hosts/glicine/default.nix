@@ -58,6 +58,7 @@ with lib.my;
         "bash"
         "css"
         "go"
+        "json"
         "latex"
         "lua"
         "nix"

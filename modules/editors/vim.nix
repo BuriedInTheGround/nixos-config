@@ -17,6 +17,7 @@ in {
       - bash
       - css
       - go
+      - json
       - latex
       - lua
       - nix
@@ -41,6 +42,7 @@ in {
       (mkIf (elem "bash" cfg.supportLSP)        nodePackages.bash-language-server)
       (mkIf (elem "css" cfg.supportLSP)         nodePackages.vscode-langservers-extracted)
       (mkIf (elem "go" cfg.supportLSP)          gopls)
+      (mkIf (elem "json" cfg.supportLSP)        nodePackages.vscode-langservers-extracted)
       (mkIf (elem "latex" cfg.supportLSP)       texlab)
       (mkIf (elem "lua" cfg.supportLSP)         lua-language-server)
       (mkIf (elem "nix" cfg.supportLSP)         rnix-lsp)
@@ -64,6 +66,7 @@ in {
           luafile ${nvimConfigDir}/init.lua
           ${if (elem "bash" cfg.supportLSP)        then "luafile ${lspServersDir}/bash.lua"        else ""}
           ${if (elem "css" cfg.supportLSP)         then "luafile ${lspServersDir}/css.lua"         else ""}
+          ${if (elem "json" cfg.supportLSP)        then "luafile ${lspServersDir}/json.lua"        else ""}
           ${if (elem "go" cfg.supportLSP)          then "luafile ${lspServersDir}/go.lua"          else ""}
           ${if (elem "latex" cfg.supportLSP)       then "luafile ${lspServersDir}/latex.lua"       else ""}
           ${if (elem "lua" cfg.supportLSP)         then "luafile ${lspServersDir}/lua.lua"         else ""}
