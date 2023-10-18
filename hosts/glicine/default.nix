@@ -96,7 +96,6 @@ with lib.my;
       ];
     };
 
-    hardware.amd.enable = true;
     hardware.audio.enable = true;
     hardware.bluetooth = {
       enable = true;

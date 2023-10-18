@@ -26,6 +26,8 @@ in {
           networking.hostName = mkDefault (removeSuffix ".nix" (baseNameOf path));
         }
 
+        inputs.nixos-hardware.nixosModules.common-gpu-amd-southern-islands
+
         # Insert every other attribute except "system" (which is already
         # inherited outside).
         (filterAttrs (n: v: !elem n [ "system" ]) attrs)
