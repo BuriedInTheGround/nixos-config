@@ -5,5 +5,10 @@ require("lspconfig").yamlls.setup {
   capabilities = lsp.capabilities,
   flags = {
     debounce_text_changes = 150,
+  },
+  settings = {
+    yaml = {
+      keyOrdering = false,
+    }
   }
 }
