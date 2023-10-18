@@ -27,9 +27,8 @@ in {
 
     # Source the nix-direnv adapted rc file.
     home.configFile."direnv/direnvrc" = let
-      package = pkgs.nix-direnv.override { enableFlakes = true; };
       text = ''
-        source ${package}/share/nix-direnv/direnvrc
+        source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc
       '';
     in mkIf cfg.nix-direnv.enable { inherit text; };
   };

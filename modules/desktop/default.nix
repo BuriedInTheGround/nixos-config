@@ -22,7 +22,7 @@ with lib.my;
       enableGhostscriptFonts = true;
 
       # Add fonts.
-      fonts = with pkgs; [
+      packages = with pkgs; [
         dejavu_fonts
         font-awesome_5
         ibm-plex

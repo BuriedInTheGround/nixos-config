@@ -79,7 +79,7 @@ in {
           ${if (elem "yaml" cfg.supportLSP)        then "luafile ${lspServersDir}/yaml.lua"        else ""}
         '';
         packages.myPlugins = with pkgs.vimPlugins; let
-          lush-nvim-fixed = pkgs.neovimUtils.buildNeovimPluginFrom2Nix {
+          lush-nvim-fixed = pkgs.neovimUtils.buildNeovimPlugin {
             pname = "lush.nvim";
             version = "2023-05-01";
             src = pkgs.fetchFromGitHub {
