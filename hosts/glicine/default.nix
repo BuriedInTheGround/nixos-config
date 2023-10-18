@@ -122,7 +122,6 @@ with lib.my;
       enable = true;
       nix-direnv.enable = true;
     };
-    shell.dog.enable = true;
     shell.duf.enable = true;
     shell.dust.enable = true;
     shell.exa.enable = true;
