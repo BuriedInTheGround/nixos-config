@@ -113,6 +113,7 @@ with lib.my;
     services.ssh.enable = true;
     services.syncthing.enable = true;
 
+    shell.adb.enable = true;
     shell.age.enable = true;
     shell.bat.enable = true;
     shell.cava.enable = true;
