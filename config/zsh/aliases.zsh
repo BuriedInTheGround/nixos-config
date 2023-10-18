@@ -31,11 +31,11 @@ if command -v xclip > /dev/null; then
 fi
 
 # Modern `ls`.
-if command -v exa > /dev/null; then
-  alias exa='exa --group-directories-first --git'
-  alias l='exa -1'
-  alias ll='exa -lg'
-  alias la='exa -la'
+if command -v eza > /dev/null; then
+  alias eza='eza --group-directories-first --git'
+  alias l='eza -1'
+  alias ll='eza -lg'
+  alias la='eza -la'
 fi
 
 # Modern `du`.

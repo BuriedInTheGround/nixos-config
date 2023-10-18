@@ -16,12 +16,12 @@ in {
       (mkIf (!cfg.useModern) tree)
     ];
 
-    modules.shell.exa = mkIf cfg.useModern {
+    modules.shell.eza = mkIf cfg.useModern {
       enable = mkForce true;
     };
 
     environment.shellAliases = mkIf cfg.useModern {
-      tree = "exa --tree";
+      tree = "eza --tree";
     };
   };
 }
