@@ -20,10 +20,12 @@ with lib;
 
   # Configure keymap in X11.
   services.xserver = {
-    layout = mkDefault "us,it";
-    xkbOptions =
-      mkDefault "terminate:ctrl_alt_bksp,eurosign:e,grp:alt_space_toggle";
-    xkbVariant = mkDefault "us";
+    xkb = {
+      layout = mkDefault "us,it";
+      options =
+       mkDefault "terminate:ctrl_alt_bksp,eurosign:e,grp:alt_space_toggle";
+      variant = mkDefault "us";
+    };
     exportConfiguration = mkDefault true;
   };
 }
