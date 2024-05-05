@@ -7,18 +7,18 @@ let
 
   cfg = config.modules.develop.flyctl;
 
-  flyctl = pkgs.buildGo121Module rec {
+  flyctl = pkgs.buildGo122Module rec {
     pname = "flyctl";
-    version = "0.1.110";
+    version = "0.2.48";
 
     src = pkgs.fetchFromGitHub {
       owner = "superfly";
       repo = "flyctl";
       rev = "v${version}";
-      hash = "sha256-uvwJr/YWkfvrch9e0RB/7rzK6O3dQg/bjLZsJPEntZ0=";
+      hash = "sha256-SwczbnL2syT/PYeWpNY16+AhxQ7LVs5fFGU6vhprjD0=";
     };
 
-    vendorHash = "sha256-mEHo7pmXsrYhGlNqGXXlFVXIyWTeUy4Sv045yLvJcrc=";
+    vendorHash = "sha256-3OOcY8wvT0Hu6/t3qqvqtOkDx/H0YCGl1Hu3aHq/FgY=";
 
     subPackages = [ "." ];
 
