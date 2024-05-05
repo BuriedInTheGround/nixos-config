@@ -15,7 +15,7 @@ let
     set-option -ag terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
 
     # Style the status bar.
-    #set-option -g status-style 'bg=#2e3440 fg=#81a1c1'
+    set-option -g status-style 'bg=#21252a fg=#dcdddd'
 
     # Start counting from 1 for windows and panes.
     set-option -g base-index      1

@@ -40,10 +40,7 @@ with lib.my;
         enable = true;
         isDefault = true;
       };
-      term.tmux = {
-        enable = true;
-        plugins = with pkgs.tmuxPlugins; [ nord ];
-      };
+      term.tmux.enable = true;
       xsecurelock.enable = true;
     };
 
