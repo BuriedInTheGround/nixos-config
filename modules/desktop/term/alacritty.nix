@@ -16,8 +16,8 @@ in {
     {
       user.packages = [ pkgs.alacritty ];
 
-      home.configFile."alacritty/alacritty.yml".source =
-        "${configDir}/alacritty/alacritty.yml";
+      home.configFile."alacritty/alacritty.toml".source =
+        "${configDir}/alacritty/alacritty.toml";
     }
 
     (mkIf cfg.isDefault {

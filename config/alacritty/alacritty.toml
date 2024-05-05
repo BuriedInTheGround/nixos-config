@@ -1,0 +1,89 @@
+import = ["~/.config/alacritty/theme.toml"]
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[font.bold]
+family = "monospace"
+style = "Bold"
+
+[font.bold_italic]
+family = "monospace"
+style = "Bold Italic"
+
+[font.italic]
+family = "monospace"
+style = "Italic"
+
+[font.normal]
+family = "monospace"
+style = "Regular"
+
+# Apply xterm-like "modifyOtherKeys" sequences to C-(number).
+#
+# See codes at https://invisible-island.net/xterm/modified-keys-gb-pc105.html
+# and convert something like `\E[27;5;54~` to `\x1b[54;5u`.
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[49;5u"
+key = "Key1"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[50;5u"
+key = "Key2"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[51;5u"
+key = "Key3"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[52;5u"
+key = "Key4"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[53;5u"
+key = "Key5"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[54;5u"
+key = "Key6"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[55;5u"
+key = "Key7"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[56;5u"
+key = "Key8"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[57;5u"
+key = "Key9"
+mods = "Control"
+
+[scrolling]
+history = 20000
+
+[shell]
+args = ["zsh", "-l", "-c", "tmux attach || tmux"]
+program = "/usr/bin/env"
+
+[window]
+dynamic_padding = true
+dynamic_title = true
+startup_mode = "Maximized"
+title = "Alacritty"
