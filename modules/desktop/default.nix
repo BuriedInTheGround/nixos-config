@@ -21,6 +21,9 @@ with lib.my;
       # in `/run/current-system/sw/share/X11/fonts`.
       fontDir.enable = true;
 
+      # Add a basic set of fonts.
+      enableDefaultPackages = true;
+
       # Add fonts provided by Ghostscript and make them available to X11 apps.
       enableGhostscriptFonts = true;
 
@@ -30,6 +33,7 @@ with lib.my;
         font-awesome_5
         ibm-plex
         iosevka-bin
+        libertine
         noto-fonts
         noto-fonts-cjk-sans
         noto-fonts-emoji
