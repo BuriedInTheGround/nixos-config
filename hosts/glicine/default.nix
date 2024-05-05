@@ -47,6 +47,7 @@ with lib.my;
       xsecurelock.enable = true;
     };
 
+    develop.coq.enable = true;
     develop.flyctl.enable = true;
     develop.gcc.enable = true;
     develop.go.enable = true;
@@ -57,6 +58,7 @@ with lib.my;
       enable = true;
       supportLSP = [
         "bash"
+        "coq"
         "css"
         "go"
         "json"

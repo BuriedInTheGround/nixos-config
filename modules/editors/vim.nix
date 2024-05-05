@@ -5,6 +5,7 @@ with lib.my;
 
 let
   cfg = config.modules.editors.vim;
+  coqCfg = config.modules.develop.coq;
   configDir = config.my.configDir;
 in {
   options.modules.editors.vim = {
@@ -15,6 +16,7 @@ in {
 
       Supported languages:
       - bash
+      - coq
       - css
       - go
       - json
@@ -40,6 +42,7 @@ in {
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
       (mkIf (elem "bash" cfg.supportLSP)        nodePackages.bash-language-server)
+      (mkIf (elem "coq" cfg.supportLSP)         coqPackages.coq-lsp)
       (mkIf (elem "css" cfg.supportLSP)         nodePackages.vscode-langservers-extracted)
       (mkIf (elem "go" cfg.supportLSP)          gopls)
       (mkIf (elem "json" cfg.supportLSP)        nodePackages.vscode-langservers-extracted)
@@ -65,6 +68,7 @@ in {
         customRC = ''
           luafile ${nvimConfigDir}/init.lua
           ${if (elem "bash" cfg.supportLSP)        then "luafile ${lspServersDir}/bash.lua"        else ""}
+          ${if (elem "coq" cfg.supportLSP)         then "luafile ${lspServersDir}/coq.lua"         else ""}
           ${if (elem "css" cfg.supportLSP)         then "luafile ${lspServersDir}/css.lua"         else ""}
           ${if (elem "json" cfg.supportLSP)        then "luafile ${lspServersDir}/json.lua"        else ""}
           ${if (elem "go" cfg.supportLSP)          then "luafile ${lspServersDir}/go.lua"          else ""}
@@ -89,6 +93,7 @@ in {
               sha256 = "117frxw7gwac21y3xbkc1ykwb5d4cj0fsax78m7bl668b6dvxah7";
             };
           };
+          coqtail = if coqCfg.enable then Coqtail else null;
         in {
           start = [
             # --- Tree-sitter ---
@@ -132,6 +137,7 @@ in {
 
             # --- Various Tools ---
             markdown-preview-nvim
+            coqtail
 
             # --- Git ---
             vim-fugitive
