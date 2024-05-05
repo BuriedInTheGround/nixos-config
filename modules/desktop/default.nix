@@ -11,6 +11,9 @@ with lib.my;
 
       # To set a wallpaper.
       feh
+
+      # Keyboard daemon.
+      sxhkd
     ];
 
     fonts = {
