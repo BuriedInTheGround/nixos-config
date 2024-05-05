@@ -142,8 +142,7 @@ with lib.my;
     shell.top = {
       enable = true;
       enableHtop = true;
-      enableZenith = true;
-      default = "zenith";
+      default = "htop";
     };
     shell.tree = {
       enable = true;
