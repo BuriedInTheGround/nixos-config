@@ -67,6 +67,7 @@ with lib.my;
         "nix"
         "svelte"
         "typescript"
+        "typst"
         "vim"
         "yaml"
       ];

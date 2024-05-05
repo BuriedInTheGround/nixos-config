@@ -27,6 +27,7 @@ in {
       - svelte
       - tailwindcss
       - typescript
+      - typst
       - vim
       - yaml
       '' (types.listOf types.str);
@@ -53,6 +54,7 @@ in {
       (mkIf (elem "svelte" cfg.supportLSP)      nodePackages.svelte-language-server)
       (mkIf (elem "tailwindcss" cfg.supportLSP) nodePackages."@tailwindcss/language-server")
       (mkIf (elem "typescript" cfg.supportLSP)  nodePackages.typescript-language-server)
+      (mkIf (elem "typst" cfg.supportLSP)       typst-lsp)
       (mkIf (elem "vim" cfg.supportLSP)         nodePackages.vim-language-server)
       (mkIf (elem "yaml" cfg.supportLSP)        nodePackages.yaml-language-server)
     ];
@@ -79,6 +81,7 @@ in {
           ${if (elem "svelte" cfg.supportLSP)      then "luafile ${lspServersDir}/svelte.lua"      else ""}
           ${if (elem "tailwindcss" cfg.supportLSP) then "luafile ${lspServersDir}/tailwindcss.lua" else ""}
           ${if (elem "typescript" cfg.supportLSP)  then "luafile ${lspServersDir}/typescript.lua"  else ""}
+          ${if (elem "typst" cfg.supportLSP)       then "luafile ${lspServersDir}/typst.lua"       else ""}
           ${if (elem "vim" cfg.supportLSP)         then "luafile ${lspServersDir}/vim.lua"         else ""}
           ${if (elem "yaml" cfg.supportLSP)        then "luafile ${lspServersDir}/yaml.lua"        else ""}
         '';
