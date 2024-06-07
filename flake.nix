@@ -18,6 +18,11 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, ... } @ inputs:
@@ -32,7 +37,10 @@
         config.allowUnfree = true;
         overlays = extraOverlays;
       };
-      pkgs = mkPkgs nixpkgs [ self.overlay ];
+      pkgs = mkPkgs nixpkgs [
+        self.overlay
+        inputs.neovim-nightly-overlay.overlays.default
+      ];
 
       # Extend the standard nixpkgs/lib with my lib located at `./lib`.
       lib = nixpkgs.lib.extend (self: super: {

@@ -44,57 +44,15 @@ with lib.my;
       xsecurelock.enable = true;
     };
 
-    develop.coq.enable = true;
     develop.flyctl.enable = true;
     develop.gcc.enable = true;
     develop.go.enable = true;
     develop.node.enable = true;
     develop.shell.enable = true;
 
-    editors.vim = {
+    editors.neovim = {
       enable = true;
-      supportLSP = [
-        "bash"
-        "coq"
-        "css"
-        "go"
-        "json"
-        "latex"
-        "lua"
-        "nix"
-        "svelte"
-        "typescript"
-        "typst"
-        "vim"
-        "yaml"
-      ];
-      supportTreesitter = [
-        "bash"
-        "bibtex"
-        "c"
-        "comment"
-        "cpp"
-        "css"
-        "go"
-        "gomod"
-        "gowork"
-        "javascript"
-        "json"
-        "html"
-        "latex"
-        "lua"
-        "make"
-        "markdown"
-        "nix"
-        "python"
-        "regex"
-        "sql"
-        "svelte"
-        "toml"
-        "typescript"
-        "vim"
-        "yaml"
-      ];
+      vimAlias = true;
     };
 
     hardware.audio.enable = true;
