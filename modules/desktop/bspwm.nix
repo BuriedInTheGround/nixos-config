@@ -38,7 +38,6 @@ in {
 
         # Enable BSPWM and LightDM.
         displayManager = {
-          defaultSession = "none+bspwm";
           lightdm.enable = true;
           lightdm.greeters.mini = {
             enable = true;
@@ -93,6 +92,10 @@ in {
           configFile = "${config.user.home}/.config/bspwm/bspwmrc";
           sxhkd.configFile = "${config.user.home}/.config/sxhkd/sxhkdrc";
         };
+      };
+
+      displayManager = {
+        defaultSession = "none+bspwm";
       };
     };
 
