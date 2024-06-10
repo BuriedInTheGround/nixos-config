@@ -32,6 +32,7 @@ with lib.my;
       media.spotify.enable = true;
       media.yabridge.enable = true;
       office.latex.enable = true;
+      office.okular.enable = true;
       office.onlyoffice.enable = true;
       office.zathura.enable = true;
       office.zoom.enable = true;
