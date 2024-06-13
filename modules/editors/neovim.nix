@@ -31,7 +31,9 @@ in {
         yaml-language-server
 
         # Formatters
+        nixfmt-rfc-style
         stylua
+        typstyle
 
         # Requirements
         charm-freeze
