@@ -31,5 +31,7 @@ in {
         source ${pkgs.nix-direnv}/share/nix-direnv/direnvrc
       '';
     in mkIf cfg.nix-direnv.enable { inherit text; };
+
+    env.DIRENV_LOG_FORMAT = ""; # Make direnv quiet.
   };
 }
