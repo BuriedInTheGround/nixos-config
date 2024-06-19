@@ -46,6 +46,6 @@ in {
       vim = "nvim";
     };
 
-    env.EDITOR = (if cfg.vimAlias then "vim" else "nvim");
+    env.EDITOR = "nvim";
   };
 }
