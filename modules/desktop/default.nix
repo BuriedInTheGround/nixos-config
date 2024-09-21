@@ -65,6 +65,16 @@ with lib.my;
     # Enable dconf configuration system and settings management tool.
     programs.dconf.enable = true;
 
+    services.printing = {
+      enable = true;
+      drivers = [ pkgs.epson-escpr2 ];
+    };
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
     # Clean up $HOME.
     system.userActivationScripts.cleanUpHome = ''
       pushd "${config.user.home}"
