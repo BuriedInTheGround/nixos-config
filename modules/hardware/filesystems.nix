@@ -19,5 +19,7 @@ in {
       jmtpfs      # For MTP devices like Android phones.
       ntfs3g      # FUSE-based NTFS driver with full write support.
     ];
+
+    services.udisks2.enable = true;
   };
 }
