@@ -47,10 +47,16 @@ with lib.my;
     vim
     wget
 
+    linux-manual
+    man-pages
+    man-pages-posix
+
     # Set https://github.com/uutils/coreutils as a replacement of the original
     # GNU coreutils.
     (uutils-coreutils.override { prefix = ""; })
   ];
+
+  documentation.dev.enable = true;
 
   # Set the configurationRevision to the Git revision of this repository.
   #
