@@ -54,6 +54,17 @@ with lib.my;
     # Set https://github.com/uutils/coreutils as a replacement of the original
     # GNU coreutils.
     (uutils-coreutils.override { prefix = ""; })
+
+    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+    pkgs.buildFHSUserEnv (base // {
+      name = "fhs";
+      targetPkgs = pkgs: (
+        (base.targetPkgs pkgs) ++ [ pkgs.pkg-config pkgs.ncurses ]
+      );
+      profile = "export FHS=1";
+      runScript = "bash";
+      extraOutputsToInstall = [ "dev" ];
+    }))
   ];
 
   documentation.dev.enable = true;
