@@ -5,7 +5,7 @@ fi
 
 # A list of non-alphanumeric characters considered part of a word by the line
 # editor.
-WORDCHARS='~!#$%^&*()_-[]{}.<>?;'
+WORDCHARS='~!$%^&*()_-[]{}.<>?;'
 
 # The maximum size of the directory stack. If it gets larger it will be
 # truncated automatically.
