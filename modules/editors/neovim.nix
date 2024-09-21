@@ -38,8 +38,9 @@ in {
         # Requirements
         charm-freeze
         nodejs
-        tree-sitter
         gotools
+        tree-sitter
+        typst
     ];
 
     environment.shellAliases = mkIf cfg.vimAlias {
