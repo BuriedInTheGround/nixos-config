@@ -25,6 +25,7 @@ in {
         marksman
         nil
         python311Packages.python-lsp-server
+        rust-analyzer
         tailwindcss-language-server
         typst-lsp
         vscode-langservers-extracted
