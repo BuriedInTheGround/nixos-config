@@ -24,7 +24,7 @@ in {
       ltex-ls
       marksman
       nil
-      python311Packages.python-lsp-server
+      pyright
       rust-analyzer
       tailwindcss-language-server
       typst-lsp
