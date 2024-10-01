@@ -13,35 +13,36 @@ in {
 
   config = mkIf cfg.enable {
     user.packages = with pkgs; [
-        neovim
+      neovim
 
-        # Language servers
-        asm-lsp
-        nodePackages.bash-language-server
-        clang-tools
-        gopls
-        lua-language-server
-        ltex-ls
-        marksman
-        nil
-        python311Packages.python-lsp-server
-        rust-analyzer
-        tailwindcss-language-server
-        typst-lsp
-        vscode-langservers-extracted
-        yaml-language-server
+      # Language servers
+      asm-lsp
+      nodePackages.bash-language-server
+      clang-tools
+      gopls
+      lua-language-server
+      ltex-ls
+      marksman
+      nil
+      python311Packages.python-lsp-server
+      rust-analyzer
+      tailwindcss-language-server
+      typst-lsp
+      vscode-langservers-extracted
+      yaml-language-server
 
-        # Formatters
-        nixfmt-rfc-style
-        stylua
-        typstyle
+      # Formatters
+      gofumpt
+      nixfmt-rfc-style
+      stylua
+      typstyle
 
-        # Requirements
-        charm-freeze
-        nodejs
-        gotools
-        tree-sitter
-        typst
+      # Requirements
+      charm-freeze
+      gotools
+      nodejs
+      tree-sitter
+      typst
     ];
 
     environment.shellAliases = mkIf cfg.vimAlias {
