@@ -34,6 +34,8 @@ in {
       # Formatters
       gofumpt
       nixfmt-rfc-style
+      ruff
+      rustfmt
       stylua
       typstyle
 
