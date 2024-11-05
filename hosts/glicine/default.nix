@@ -64,6 +64,7 @@ with lib.my;
     hardware.sensors.enable = true;
     hardware.virt.enable = true;
 
+    services.docker.enable = true;
     services.dunst.enable = true;
     services.keychain.enable = true;
     services.mpd.enable = true;
