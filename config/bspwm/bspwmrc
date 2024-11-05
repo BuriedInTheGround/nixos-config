@@ -60,6 +60,9 @@ bspc rule -a Zathura               desktop=9 follow=on
 # Make sure XKB keymap is applied.
 setxkbmap
 
+# Set default cursor to left pointer.
+xsetroot -cursor_name left_ptr
+
 # Start polybar if correctly installed.
 if command -v polybar > /dev/null; then
     if [[ -x "$XDG_CONFIG_HOME/polybar/launch.sh" ]]; then
