@@ -11,6 +11,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    user.packages = [ pkgs.youtube-dl ];
+    user.packages = [ pkgs.yt-dlp ];
   };
 }
