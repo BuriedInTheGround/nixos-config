@@ -15,19 +15,13 @@ in {
     user.packages = [ pkgs.playerctl ];
 
     # Enable sound.
-    sound.enable = true;
-    hardware.pulseaudio = {
+    security.rtkit.enable = true;
+    services.pipewire = {
       enable = true;
-
-      # Automatically switch audio to the newer connected device.
-      extraConfig = ''
-        load-module module-switch-on-connect
-      '';
-
-      # Enable realtime scheduling.
-      daemon.config = {
-        realtime-scheduling = "yes";
-      };
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
     };
 
     # Add the user to the `audio` group.

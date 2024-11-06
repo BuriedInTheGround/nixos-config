@@ -23,15 +23,15 @@ super + Escape
 
 # audio mute
 @XF86AudioMute
-        amixer set Master toggle
+        wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 # audio volume up
 XF86AudioRaiseVolume
-        amixer set Master 5%+
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+
 
 # audio volume down
 XF86AudioLowerVolume
-        amixer set Master 5%-
+        wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-
 
 # calc
 XF86Calculator
