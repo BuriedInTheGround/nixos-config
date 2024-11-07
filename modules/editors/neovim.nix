@@ -27,7 +27,7 @@ in {
       pyright
       rust-analyzer
       tailwindcss-language-server
-      typst-lsp
+      tinymist
       vscode-langservers-extracted
       yaml-language-server
 
