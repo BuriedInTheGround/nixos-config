@@ -14,17 +14,18 @@ in {
     # Add CLI utility to control media players that implement MPRIS.
     user.packages = [ pkgs.playerctl ];
 
-    # Enable sound.
+    # Enable PipeWire for sound.
+    sound.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
+      audio.enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      jack.enable = true;
     };
 
     # Add the user to the `audio` group.
-    user.extraGroups = [ "audio" ];
+    user.extraGroups = [ "audio" "pipewire" ];
   };
 }
