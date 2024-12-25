@@ -38,9 +38,8 @@ with lib.my;
         noto-fonts-cjk-sans
         noto-fonts-emoji
         twitter-color-emoji
-        (nerdfonts.override {
-          fonts = [ "DejaVuSansMono" "IBMPlexMono" ];
-        })
+        nerd-fonts.blex-mono
+        nerd-fonts.dejavu-sans-mono
       ];
 
       # Enable font antialiasing and set default fonts.
