@@ -21,7 +21,7 @@ in {
       clang-tools
       gopls
       lua-language-server
-      ltex-ls
+      ltex-ls-plus
       marksman
       nil
       pyright
