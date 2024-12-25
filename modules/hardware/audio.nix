@@ -15,7 +15,6 @@ in {
     user.packages = [ pkgs.playerctl ];
 
     # Enable PipeWire for sound.
-    sound.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
