@@ -11,9 +11,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    virtualisation.docker.rootless = {
+    virtualisation.docker = {
       enable = true;
-      setSocketVariable = true;
+      autoPrune.enable = true;
+      daemon.settings = {
+        data-root = "/run/media/simone/HardDisk/dckr";
+      };
+      storageDriver = "overlay2";
     };
+
+    user.extraGroups = [ "docker" ];
   };
 }
