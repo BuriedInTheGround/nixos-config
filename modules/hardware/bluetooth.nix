@@ -32,7 +32,7 @@ in {
 
     (mkIf cfg.audio.enable {
       # Enable PulseAudio bluetooth support for AAC, APTX, APTX-HD and LDAC.
-      hardware.pulseaudio = {
+      services.pulseaudio = {
         package = mkForce pkgs.pulseaudioFull;
       };
 
