@@ -25,6 +25,7 @@ with lib.my;
       media.mpv.enable = true;
       media.ncmpcpp.enable = true;
       office.latex.enable = true;
+      office.lockbook.enable = true;
       office.okular.enable = true;
       office.onlyoffice.enable = true;
       office.zathura.enable = true;
