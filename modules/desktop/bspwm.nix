@@ -1,4 +1,4 @@
-{ options, config, lib, pkgs, ... }:
+{ inputs, options, config, lib, pkgs, ... }:
 
 with lib;
 with lib.my;
@@ -23,7 +23,10 @@ in {
       };
 
       # Enable unclutter to hide the mouse cursor when inactive.
-      unclutter.enable = true;
+      unclutter = {
+        enable = true;
+        package = inputs.nixpkgs-d70bd19.legacyPackages.${pkgs.system}.unclutter-xfixes;
+      };
 
       # Enable Redshift to change the screen's colour temperature depending on
       # the time of day.

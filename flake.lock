@@ -235,12 +235,29 @@
         "type": "github"
       }
     },
+    "nixpkgs-d70bd19": {
+      "locked": {
+        "lastModified": 1734649271,
+        "narHash": "sha256-4EVBRhOjMDuGtMaofAIqzJbg4Ql7Ai0PSeuVZTHjyKQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d70bd19e0a38ad4790d3913bf08fcbfc9eeca507",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d70bd19e0a38ad4790d3913bf08fcbfc9eeca507",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-d70bd19": "nixpkgs-d70bd19"
       }
     },
     "treefmt-nix": {
