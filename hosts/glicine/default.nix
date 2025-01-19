@@ -17,7 +17,6 @@ with lib.my;
       apps.inkscape.enable = true;
       apps.pavuc.enable = true;
       apps.rofi.enable = true;
-      apps.telegram.enable = true;
       browsers.chromium.enable = true;
       browsers.firefox.enable = true;
       bspwm.enable = true;
